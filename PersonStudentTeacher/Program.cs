@@ -10,6 +10,7 @@ namespace PersonStudentTeacher
     {
         static void Main(string[] args)
         {
+
         }
     }
 }
