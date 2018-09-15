@@ -9,5 +9,6 @@ namespace PersonStudentTeacher
     class Pers
     {
         private string name { get; set; }
+        private string addres { get; set; }
     }
 }
