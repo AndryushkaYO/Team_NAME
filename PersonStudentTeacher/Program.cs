@@ -10,7 +10,11 @@ namespace PersonStudentTeacher
     {
         static void Main(string[] args)
         {
+<<<<<<< HEAD
 
+=======
+            Console.WriteLine("Hello World!");
+>>>>>>> ec3beb9bbdf92e26c3f1dec2d79b1e7b25619a6e
         }
     }
 }
