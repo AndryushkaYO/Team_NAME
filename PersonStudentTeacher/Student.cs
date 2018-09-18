@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PersonStudentTeacher
+﻿namespace PersonStudentTeacher
 {
-    class Student : Person
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    public class Student : Person
     {
-        public string Teacher { get; set; }
-        public string Group { get; set; }
+       
 
         public Student() : base()
         {
@@ -20,7 +18,9 @@ namespace PersonStudentTeacher
         {
             Teacher = teacher;
             Group = group;
-        }       
+        }
+        public string Teacher { get; set; }
+        public string Group { get; set; }
 
         public override string ToString()
         {
@@ -40,15 +40,15 @@ namespace PersonStudentTeacher
         public override int GetHashCode()
         {
             var hashCode = 398198191;
-            hashCode = hashCode * -1521134295 + base.GetHashCode();
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Teacher);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Group);
+            hashCode = (hashCode * -1521134295) + base.GetHashCode();
+            hashCode = (hashCode * -1521134295) + EqualityComparer<string>.Default.GetHashCode(Teacher);
+            hashCode = (hashCode * -1521134295) + EqualityComparer<string>.Default.GetHashCode(Group);
             return hashCode;
         }
 
         public override object Clone()
         {
-            return new Student(Name,Group,Teacher);
+            return new Student(Name, Group, Teacher);
         }
 
         public override void Input(string[] args)
