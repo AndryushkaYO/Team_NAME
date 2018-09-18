@@ -60,15 +60,51 @@ namespace PersonStudentTeacher
             }
         }
 
+        public static List<Person> CloneList(ref List<Person> Persons)
+        {
+            List<Person> ClonedList = new List<Person>();
+            foreach (Person person in Persons)
+            {
+                ClonedList.Add((Person)person.Clone());
+            }
+
+            return ClonedList;
+        }
+
+        public static void WriteCloned(List<Person> pers)
+        {
+            List<Person> clonedPers = CloneList(ref pers);
+            using (StreamWriter sw = new StreamWriter("ClonedOutput.txt"))
+            {
+                foreach (var per in clonedPers)
+                {
+                    sw.WriteLine(per.ToString());
+                }
+            }
+        }
+       
+
         static void Main(string[] args)
         {
             List<Person> pers = new List<Person>();
             ReadPersons("Persons.txt", pers);
-            foreach (var per in pers)
+            WriteCloned(pers);    
+
+            Console.WriteLine("Unique persons:  ");
+            //Uses Equals and GetHashcode
+            IEnumerable<Person> uniquePers = pers.Distinct().ToList();
+            foreach (var per in uniquePers)
             {
                 Console.WriteLine(per.ToString());
-
             }
+
+            IEnumerable<Student> students = from per in uniquePers where per is Student select (Student)per;
+            Console.WriteLine("Number of students:  " + students.Count());
+
+            IEnumerable<Teacher> teachers = from teach in uniquePers where teach is Teacher select (Teacher)teach;
+            Console.WriteLine("Number of teachers:  "+ teachers.Count());
+
+
         }
     }
 }
