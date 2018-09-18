@@ -46,6 +46,11 @@ namespace PersonStudentTeacher
             return hashCode;
         }
 
+        public override object Clone()
+        {
+            return new Student(Name,Group,Teacher);
+        }
+
         public override void Input(string[] args)
         {
             Name = args[0];
@@ -57,5 +62,7 @@ namespace PersonStudentTeacher
         {
             sw.WriteLine(ToString());
         }
+
+       
     }
 }
