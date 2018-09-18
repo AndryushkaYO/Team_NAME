@@ -1,32 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PersonStudentTeacher
+﻿namespace PersonStudentTeacher
 {
-    public  class Person : ICloneable 
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    public class Person : ICloneable
     {
-        private string _name;
-
-        protected Person(string name)
-        {
-            Name = name;
-        }
-
+        private string name;
         public Person()
         {
         }
-
-        public string Name { get => _name; set => _name = value; }
+        public Person(string name)
+        {
+            this.Name = name;
+        }
+        public string Name { get => this.name; set => this.name = value; }
 
         public override bool Equals(object obj)
-        { 
+        {
             var person = obj as Person;
             return person != null &&
-                   Name == person.Name;
+                   this.Name == person.Name;
         }
 
         public override int GetHashCode()
