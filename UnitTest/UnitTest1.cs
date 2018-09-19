@@ -26,9 +26,41 @@ namespace UnitTest
     [TestClass]
     public class UnitTest
     {
+        //Tests for Persons class
         [TestMethod]
-        public void TestMethod1()
+        public void PersonConstructorTest()
         {
+            Person man = new Person("Alex");
+            string expected = "Alex";
+            string actual = man.Name;
+            Assert.AreEqual(actual, expected);
         }
+        [TestMethod]
+        public void PersonEqualsTest()
+        {
+            Person man = new Person("Alex");
+            Person woman = new Person("Erza");
+            bool expected = false;
+            bool actual = man.Equals(woman);
+            Assert.AreEqual(actual, expected);
+        }
+        [TestMethod]
+        public void PersonGetHashCodeTest()
+        {
+            Person man = new Person("Alex");
+            int expected = 0;
+            int actual = 0;
+            Assert.AreEqual(1,1);
+            
+        }
+        [TestMethod]
+        public void PersonToStringTest()
+        {
+            Person man = new Person("Alex");
+            string expected = "Alex";
+            string actual = man.ToString();
+            Assert.AreEqual(actual, expected);
+        }
+
     }
 }
