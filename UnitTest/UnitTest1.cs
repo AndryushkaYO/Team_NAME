@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PersonStudentTeacher;
 ///Створити
@@ -96,6 +97,52 @@ namespace UnitTest
             string actual = st.ToString();
             Assert.AreEqual(actual, expected);
         }
+
+        //Tests for Teacher class
+        [TestMethod]
+        public void TeacherConstructorTest()
+        {
+            Student st = new Student("Alex", "Pmi-32", "KlakovichLM");
+            List<Student> l = new List<Student> {st};            
+            Teacher teacher = new Teacher("KlakovichLM", "doctor", l);
+            string expected = "KlakovichLM doctor Alex Pmi-32 Teacher:  KlakovichLM";
+            string actual = teacher.Name + " " + teacher.Degree + " " + teacher.Students[0].ToString();
+            Assert.AreEqual(actual, expected);
+        }
+        [TestMethod]
+        public void TeacherEqualsTest()
+        {
+            Student st = new Student("Alex", "Pmi-32", "KlakovichLM");
+            List<Student> l = new List<Student> { st };
+            Teacher teacher = new Teacher("KlakovichLM", "doctor", l);
+            Teacher teacher2 = new Teacher("KlakovichLM", "doctor", l);
+
+            bool expected = true;
+            bool actual = teacher.Equals(teacher2);
+            Assert.AreEqual(actual, expected);
+        }
+        [TestMethod]
+        public void TeacherGetHashCodeTest()
+        {
+            Student st = new Student("Alex", "Pmi-32", "KlakovichLM");
+            List<Student> l = new List<Student> { st };
+            Teacher teacher = new Teacher("KlakovichLM", "doctor", l);
+            int expected = 0;
+            int actual = 1;
+            Assert.AreEqual(actual, expected);
+        }
+        [TestMethod]
+        public void TeacherToStringTest()
+        {
+            Student st = new Student("Alex", "Pmi-32", "KlakovichLM");
+            List<Student> l = new List<Student> { st };
+            Teacher teacher = new Teacher("KlakovichLM", "doctor", l);
+            string expected = "KlakovichLM doctor Students:\r\nAlex Pmi-32 Teacher:  KlakovichLM";
+            string actual = teacher.ToString();
+            Assert.AreEqual(actual, expected);
+        }
+
+        //SetStudents, ReadPersons, CloneList
 
     }
 }
