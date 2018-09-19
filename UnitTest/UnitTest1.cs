@@ -50,7 +50,7 @@ namespace UnitTest
             Person man = new Person("Alex");
             int expected = 0;
             int actual = 0;
-            Assert.AreEqual(1,1);
+            Assert.AreEqual(0,1);
             
         }
         [TestMethod]
@@ -59,6 +59,41 @@ namespace UnitTest
             Person man = new Person("Alex");
             string expected = "Alex";
             string actual = man.ToString();
+            Assert.AreEqual(actual, expected);
+        }
+
+        //Tests for Student class
+        [TestMethod]
+        public void StudentConstructorTest()
+        {
+            Student st = new Student("Alex", "Pmi-32", "KlakovichLM");
+            string expected = "Alex Pmi-32 KlakovichLM";
+            string actual = st.Name + " " + st.Group + " " + st.Teacher;
+            Assert.AreEqual(actual, expected);
+        }
+        [TestMethod]
+        public void StudentEqualsTest()
+        {
+            Student st = new Student("Alex", "Pmi-32", "KlakovichLM");
+            Student s2 = new Student("Alex", "Pmi-32", "KlakovichLM");
+            bool expected = true;
+            bool actual = st.Equals(s2);
+            Assert.AreEqual(actual, expected);
+        }
+        [TestMethod]
+        public void StudentGetHashCodeTest()
+        {
+            Student st = new Student("Alex", "Pmi-32", "KlakovichLM");
+            int expected =1 ;
+            int actual = st.GetHashCode();
+            Assert.AreEqual(actual, expected);
+        }
+        [TestMethod]
+        public void StudentToStringTest()
+        {
+            Student st = new Student("Alex", "Pmi-32", "KlakovichLM");
+            string expected = "Alex Pmi-32 Teacher:  KlakovichLM";
+            string actual = st.ToString();
             Assert.AreEqual(actual, expected);
         }
 
