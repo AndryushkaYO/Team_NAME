@@ -6,15 +6,15 @@ using System.Text;
 using System.Threading.Tasks;
 namespace PersonStudentTeacher
 {
-    class ExceptionsHandler
+    public class ExceptionsHandler
     {
-        static void SetStudents(Teacher tc, List<Person> pers)
+        public static void SetStudents(ref Teacher tc, ref List<Person> pers)
         {
-            foreach (var per in pers)
+            for(int i = 0; i < pers.Count(); i++)
             {
-                if (per is Student && ((Student)per).Teacher == tc.Name)
+                if (pers[i] is Student && ((Student)pers[i]).Teacher == tc.Name)
                 {
-                    tc.Students.Add((Student)per);
+                    tc.Students.Add((Student)pers[i].Clone());
                 }
             }
         }
@@ -54,7 +54,7 @@ namespace PersonStudentTeacher
             {
                 if (per is Teacher teacher)
                 {
-                    SetStudents(teacher, pers);
+                    SetStudents(ref teacher,ref pers);
                 }
             }
         }

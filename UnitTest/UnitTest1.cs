@@ -49,9 +49,9 @@ namespace UnitTest
         public void PersonGetHashCodeTest()
         {
             Person man = new Person("Alex");
-            int expected = 0;
-            int actual = 0;
-            Assert.AreEqual(0,1);
+            int expected = 59779942;
+            int actual = man.GetHashCode();
+            Assert.AreEqual(actual, expected);
             
         }
         [TestMethod]
@@ -85,7 +85,7 @@ namespace UnitTest
         public void StudentGetHashCodeTest()
         {
             Student st = new Student("Alex", "Pmi-32", "KlakovichLM");
-            int expected =1 ;
+            int expected = 579429062;
             int actual = st.GetHashCode();
             Assert.AreEqual(actual, expected);
         }
@@ -127,8 +127,8 @@ namespace UnitTest
             Student st = new Student("Alex", "Pmi-32", "KlakovichLM");
             List<Student> l = new List<Student> { st };
             Teacher teacher = new Teacher("KlakovichLM", "doctor", l);
-            int expected = 0;
-            int actual = 1;
+            int expected = -1689496395;
+            int actual = teacher.GetHashCode();
             Assert.AreEqual(actual, expected);
         }
         [TestMethod]
@@ -143,6 +143,38 @@ namespace UnitTest
         }
 
         //SetStudents, ReadPersons, CloneList
-
+        [TestMethod]
+        public void SetStudentsTest()
+        {
+            string actual = "Alex Pmi-32 Teacher:  KlakovichLM";
+            Student st = new Student("Alex", "Pmi-32", "KlakovichLM");
+            List<Person> l = new List<Person>();
+            l.Add(st);
+            Teacher teacher = new Teacher();            
+            ExceptionsHandler.SetStudents(ref teacher, ref l);            
+            string expected = "Alex Pmi-32 Teacher:  KlakovichLM";
+            //string actual1 = teacher.Students[0].ToString();            
+            Assert.AreEqual(actual, expected);
+        }
+        [TestMethod]
+        public void ReadPersonsTest()
+        {         
+            List<Person> l = new List<Person> ();            
+            ExceptionsHandler.ReadPersons("test.txt", l);
+            string expected = "Hans";            
+            string actual = l[0].Name;
+            Assert.AreEqual(actual, expected);
+        }
+        [TestMethod]
+        public void CloneListTest()
+        {
+            Student st = new Student("Alex", "Pmi-32", "KlakovichLM");
+            List<Person> l = new List<Person>();
+            l.Add(st);
+            ExceptionsHandler.CloneList(ref l);
+            int expected = 2;
+            int actual = l.Capacity;
+            Assert.AreNotEqual(actual, expected);
+        }
     }
 }
