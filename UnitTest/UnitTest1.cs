@@ -146,21 +146,21 @@ namespace UnitTest
         [TestMethod]
         public void SetStudentsTest()
         {
-            string actual = "Alex Pmi-32 Teacher:  KlakovichLM";
+            //string actual = "Alex Pmi-32 Teacher:  KlakovichLM";
             Student st = new Student("Alex", "Pmi-32", "KlakovichLM");
             List<Person> l = new List<Person>();
             l.Add(st);
             Teacher teacher = new Teacher();            
-            ExceptionsHandler.SetStudents(ref teacher, ref l);            
+            Task.SetStudents(ref teacher, ref l);            
             string expected = "Alex Pmi-32 Teacher:  KlakovichLM";
-            //string actual1 = teacher.Students[0].ToString();            
+            string actual = teacher.Students[0].ToString();            
             Assert.AreEqual(actual, expected);
         }
         [TestMethod]
         public void ReadPersonsTest()
         {         
             List<Person> l = new List<Person> ();            
-            ExceptionsHandler.ReadPersons("test.txt", l);
+            Task.ReadPersons("test.txt", l);
             string expected = "Hans";            
             string actual = l[0].Name;
             Assert.AreEqual(actual, expected);
@@ -171,7 +171,7 @@ namespace UnitTest
             Student st = new Student("Alex", "Pmi-32", "KlakovichLM");
             List<Person> l = new List<Person>();
             l.Add(st);
-            ExceptionsHandler.CloneList(ref l);
+            Task.CloneList(ref l);
             int expected = 2;
             int actual = l.Capacity;
             Assert.AreNotEqual(actual, expected);

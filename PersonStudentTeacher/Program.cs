@@ -8,16 +8,24 @@ namespace PersonStudentTeacher
 {
     class Program
     {
-        public static void WriteExceptionMessage(Exception ex, string s)
+       /// <summary>
+       /// Outputs the exception caught
+       /// </summary>
+       /// <param name="exception">Thrown exception</param>
+       /// <param name="message">Exception's message</param>
+        public static void WriteExceptionMessage(Exception exception, string message)
         {
-            Console.WriteLine($"Type: {s}\n\nMessage: {ex.Message}\n\nStackTrace: {ex.StackTrace}\n\nDate: {DateTime.Now.ToString()}");
+            Console.WriteLine($"Type: {message}\n\nMessage: {exception.Message}\n\nStackTrace: {exception.StackTrace}\n\nDate: {DateTime.Now.ToString()}");
             Console.WriteLine("\n\t-----------------------------------------------------------------------------\n");
         }
+        /// <summary>
+        /// Main function
+        /// </summary>
         static void Main(string[] args)
         {
             try
             {
-                ExceptionsHandler.Do();
+                Task.Do();
             }
             catch (ArgumentException e)
             {
