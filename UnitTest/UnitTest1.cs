@@ -34,8 +34,9 @@ namespace UnitTest
             Person man = new Person("Alex");
             string expected = "Alex";
             string actual = man.Name;
-            Assert.AreEqual(actual, expected);
+            Assert.AreEqual(actual, expected);                       
         }
+
         [TestMethod]
         public void PersonEqualsTest()
         {
@@ -45,6 +46,7 @@ namespace UnitTest
             bool actual = man.Equals(woman);
             Assert.AreEqual(actual, expected);
         }
+
         [TestMethod]
         public void PersonGetHashCodeTest()
         {
@@ -54,6 +56,7 @@ namespace UnitTest
             Assert.AreEqual(actual, expected);
             
         }
+
         [TestMethod]
         public void PersonToStringTest()
         {
@@ -72,6 +75,7 @@ namespace UnitTest
             string actual = student.Name + " " + student.Group + " " + student.Teacher;
             Assert.AreEqual(actual, expected);
         }
+
         [TestMethod]
         public void StudentEqualsTest()
         {
@@ -81,6 +85,7 @@ namespace UnitTest
             bool actual = student.Equals(student2);
             Assert.AreEqual(actual, expected);
         }
+
         [TestMethod]
         public void StudentGetHashCodeTest()
         {
@@ -89,6 +94,7 @@ namespace UnitTest
             int actual = student.GetHashCode();
             Assert.AreEqual(actual, expected);
         }
+
         [TestMethod]
         public void StudentToStringTest()
         {
@@ -109,6 +115,7 @@ namespace UnitTest
             string actual = teacher.Name + " " + teacher.Degree + " " + teacher.Students[0].ToString();
             Assert.AreEqual(actual, expected);
         }
+
         [TestMethod]
         public void TeacherEqualsTest()
         {
@@ -120,6 +127,7 @@ namespace UnitTest
             bool actual = teacher.Equals(teacher2);
             Assert.AreEqual(actual, expected);
         }
+
         [TestMethod]
         public void TeacherGetHashCodeTest()
         {
@@ -130,6 +138,7 @@ namespace UnitTest
             int actual = teacher.GetHashCode();
             Assert.AreEqual(actual, expected);
         }
+
         [TestMethod]
         public void TeacherToStringTest()
         {
@@ -155,6 +164,7 @@ namespace UnitTest
             string actual = teacher.Students[0].ToString();            
             Assert.AreEqual(actual, expected);
         }
+
         [TestMethod]
         public void ReadPersonsTest()
         {         
@@ -164,6 +174,7 @@ namespace UnitTest
             string actual = students_list[0].Name;
             Assert.AreEqual(actual, expected);
         }
+
         [TestMethod]
         public void CloneListTest()
         {
