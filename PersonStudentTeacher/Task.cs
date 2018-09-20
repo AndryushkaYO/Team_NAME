@@ -119,7 +119,7 @@ namespace PersonStudentTeacher
 
             IEnumerable<Teacher> teachers = from teach in uniquePers where teach is Teacher select (Teacher)teach;
             Console.WriteLine("Number of teachers:  " + teachers.Count());
-            Console.ReadLine();
+            Console.ReadLine();           
         }
     }
 }

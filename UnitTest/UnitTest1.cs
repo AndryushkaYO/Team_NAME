@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PersonStudentTeacher;
-///Створити
+///Tasks:
 /*
  1. Тести для класу Person
     -конструктор
@@ -28,7 +28,7 @@ namespace UnitTest
     public class UnitTest
     {
         //Tests for Persons class
-        [TestMethod]
+        [TestMethod]        
         public void PersonConstructorTest()
         {
             Person man = new Person("Alex");
@@ -67,34 +67,34 @@ namespace UnitTest
         [TestMethod]
         public void StudentConstructorTest()
         {
-            Student st = new Student("Alex", "Pmi-32", "KlakovichLM");
+            Student student = new Student("Alex", "Pmi-32", "KlakovichLM");
             string expected = "Alex Pmi-32 KlakovichLM";
-            string actual = st.Name + " " + st.Group + " " + st.Teacher;
+            string actual = student.Name + " " + student.Group + " " + student.Teacher;
             Assert.AreEqual(actual, expected);
         }
         [TestMethod]
         public void StudentEqualsTest()
         {
-            Student st = new Student("Alex", "Pmi-32", "KlakovichLM");
-            Student s2 = new Student("Alex", "Pmi-32", "KlakovichLM");
+            Student student = new Student("Alex", "Pmi-32", "KlakovichLM");
+            Student student2 = new Student("Alex", "Pmi-32", "KlakovichLM");
             bool expected = true;
-            bool actual = st.Equals(s2);
+            bool actual = student.Equals(student2);
             Assert.AreEqual(actual, expected);
         }
         [TestMethod]
         public void StudentGetHashCodeTest()
         {
-            Student st = new Student("Alex", "Pmi-32", "KlakovichLM");
+            Student student = new Student("Alex", "Pmi-32", "KlakovichLM");
             int expected = 579429062;
-            int actual = st.GetHashCode();
+            int actual = student.GetHashCode();
             Assert.AreEqual(actual, expected);
         }
         [TestMethod]
         public void StudentToStringTest()
         {
-            Student st = new Student("Alex", "Pmi-32", "KlakovichLM");
+            Student student = new Student("Alex", "Pmi-32", "KlakovichLM");
             string expected = "Alex Pmi-32 Teacher:  KlakovichLM";
-            string actual = st.ToString();
+            string actual = student.ToString();
             Assert.AreEqual(actual, expected);
         }
 
@@ -102,9 +102,9 @@ namespace UnitTest
         [TestMethod]
         public void TeacherConstructorTest()
         {
-            Student st = new Student("Alex", "Pmi-32", "KlakovichLM");
-            List<Student> l = new List<Student> {st};            
-            Teacher teacher = new Teacher("KlakovichLM", "doctor", l);
+            Student student = new Student("Alex", "Pmi-32", "KlakovichLM");
+            List<Student> students_list = new List<Student> {student};            
+            Teacher teacher = new Teacher("KlakovichLM", "doctor", students_list);
             string expected = "KlakovichLM doctor Alex Pmi-32 Teacher:  KlakovichLM";
             string actual = teacher.Name + " " + teacher.Degree + " " + teacher.Students[0].ToString();
             Assert.AreEqual(actual, expected);
@@ -112,11 +112,10 @@ namespace UnitTest
         [TestMethod]
         public void TeacherEqualsTest()
         {
-            Student st = new Student("Alex", "Pmi-32", "KlakovichLM");
-            List<Student> l = new List<Student> { st };
-            Teacher teacher = new Teacher("KlakovichLM", "doctor", l);
-            Teacher teacher2 = new Teacher("KlakovichLM", "doctor", l);
-
+            Student student = new Student("Alex", "Pmi-32", "KlakovichLM");
+            List<Student> students_list = new List<Student> {student};
+            Teacher teacher = new Teacher("KlakovichLM", "doctor", students_list);
+            Teacher teacher2 = new Teacher("KlakovichLM", "doctor", students_list);
             bool expected = true;
             bool actual = teacher.Equals(teacher2);
             Assert.AreEqual(actual, expected);
@@ -124,9 +123,9 @@ namespace UnitTest
         [TestMethod]
         public void TeacherGetHashCodeTest()
         {
-            Student st = new Student("Alex", "Pmi-32", "KlakovichLM");
-            List<Student> l = new List<Student> { st };
-            Teacher teacher = new Teacher("KlakovichLM", "doctor", l);
+            Student student = new Student("Alex", "Pmi-32", "KlakovichLM");
+            List<Student> students_list = new List<Student> { student };
+            Teacher teacher = new Teacher("KlakovichLM", "doctor", students_list);
             int expected = -1689496395;
             int actual = teacher.GetHashCode();
             Assert.AreEqual(actual, expected);
@@ -134,9 +133,9 @@ namespace UnitTest
         [TestMethod]
         public void TeacherToStringTest()
         {
-            Student st = new Student("Alex", "Pmi-32", "KlakovichLM");
-            List<Student> l = new List<Student> { st };
-            Teacher teacher = new Teacher("KlakovichLM", "doctor", l);
+            Student student = new Student("Alex", "Pmi-32", "KlakovichLM");
+            List<Student> students_list = new List<Student> { student };
+            Teacher teacher = new Teacher("KlakovichLM", "doctor", students_list);
             string expected = "KlakovichLM doctor Students:\r\nAlex Pmi-32 Teacher:  KlakovichLM";
             string actual = teacher.ToString();
             Assert.AreEqual(actual, expected);
@@ -145,13 +144,13 @@ namespace UnitTest
         //SetStudents, ReadPersons, CloneList
         [TestMethod]
         public void SetStudentsTest()
-        {
-            //string actual = "Alex Pmi-32 Teacher:  KlakovichLM";
-            Student st = new Student("Alex", "Pmi-32", "KlakovichLM");
-            List<Person> l = new List<Person>();
-            l.Add(st);
-            Teacher teacher = new Teacher();            
-            Task.SetStudents(ref teacher, ref l);            
+        {            
+            Student student = new Student("Alex", "Pmi-32", "KlakovichLM");
+            List<Person> students_list = new List<Person>();
+            students_list.Add(student);
+            Teacher teacher = new Teacher();
+            teacher.Name = "KlakovichLM";
+            Task.SetStudents(ref teacher, ref students_list);            
             string expected = "Alex Pmi-32 Teacher:  KlakovichLM";
             string actual = teacher.Students[0].ToString();            
             Assert.AreEqual(actual, expected);
@@ -159,21 +158,21 @@ namespace UnitTest
         [TestMethod]
         public void ReadPersonsTest()
         {         
-            List<Person> l = new List<Person> ();            
-            Task.ReadPersons("test.txt", l);
+            List<Person> students_list = new List<Person> ();            
+            Task.ReadPersons("test.txt", students_list);
             string expected = "Hans";            
-            string actual = l[0].Name;
+            string actual = students_list[0].Name;
             Assert.AreEqual(actual, expected);
         }
         [TestMethod]
         public void CloneListTest()
         {
-            Student st = new Student("Alex", "Pmi-32", "KlakovichLM");
-            List<Person> l = new List<Person>();
-            l.Add(st);
-            Task.CloneList(ref l);
+            Student student = new Student("Alex", "Pmi-32", "KlakovichLM");
+            List<Person> students_list = new List<Person>();
+            students_list.Add(student);
+            Task.CloneList(ref students_list);
             int expected = 2;
-            int actual = l.Capacity;
+            int actual = students_list.Capacity;
             Assert.AreNotEqual(actual, expected);
         }
     }
