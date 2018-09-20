@@ -1,0 +1,10 @@
+C:\Users\user\Desktop\Новая папка (3)\Team_NAME\PersonStudentTeacher\bin\Debug\PersonStudentTeacher.exe.config
+C:\Users\user\Desktop\Новая папка (3)\Team_NAME\PersonStudentTeacher\bin\Debug\PersonStudentTeacher.exe
+C:\Users\user\Desktop\Новая папка (3)\Team_NAME\PersonStudentTeacher\bin\Debug\PersonStudentTeacher.pdb
+C:\Users\user\Desktop\Новая папка (3)\Team_NAME\PersonStudentTeacher\bin\Debug\StyleCop.dll
+C:\Users\user\Desktop\Новая папка (3)\Team_NAME\PersonStudentTeacher\bin\Debug\StyleCop.xml
+C:\Users\user\Desktop\Новая папка (3)\Team_NAME\PersonStudentTeacher\obj\Debug\PersonStudentTeacher.csprojAssemblyReference.cache
+C:\Users\user\Desktop\Новая папка (3)\Team_NAME\PersonStudentTeacher\obj\Debug\PersonStudentTeacher.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\Новая папка (3)\Team_NAME\PersonStudentTeacher\obj\Debug\PersonStudentTeacher.csproj.CopyComplete
+C:\Users\user\Desktop\Новая папка (3)\Team_NAME\PersonStudentTeacher\obj\Debug\PersonStudentTeacher.exe
+C:\Users\user\Desktop\Новая папка (3)\Team_NAME\PersonStudentTeacher\obj\Debug\PersonStudentTeacher.pdb
