@@ -6,8 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 namespace PersonStudentTeacher
 {
-    public class ExceptionsHandler
+    public class Task
     {
+        /// <summary>
+        /// Set teacher's array of students
+        /// </summary>
+        /// <param name="tc">Teacher</param>
+        /// <param name="pers">List of Persons</param>
         public static void SetStudents(ref Teacher tc, ref List<Person> pers)
         {
             for(int i = 0; i < pers.Count(); i++)
@@ -18,7 +23,11 @@ namespace PersonStudentTeacher
                 }
             }
         }
-
+        /// <summary>
+        /// Read Persons from file
+        /// </summary>
+        /// <param name="fileName">String</param>
+        /// <param name="pers">List of Persons</param>
         public static void ReadPersons(string fileName, List<Person> pers)
         {
             string path = System.IO.Directory.GetCurrentDirectory().Replace("bin\\Debug", fileName);
@@ -58,7 +67,11 @@ namespace PersonStudentTeacher
                 }
             }
         }
-
+        /// <summary>
+        /// Clones list of Persons
+        /// </summary>
+        /// <param name="Persons">List of Persons</param>
+        /// <returns>List of Persons</returns>
         public static List<Person> CloneList(ref List<Person> Persons)
         {
             List<Person> ClonedList = new List<Person>();
@@ -69,7 +82,10 @@ namespace PersonStudentTeacher
 
             return ClonedList;
         }
-
+        /// <summary>
+        /// Prints the list of cloned Persons 
+        /// </summary>
+        /// <param name="pers">List of Persons</param>
         public static void WriteCloned(List<Person> pers)
         {
             List<Person> clonedPers = CloneList(ref pers);
@@ -81,6 +97,9 @@ namespace PersonStudentTeacher
                 }
             }
         }
+        /// <summary>
+        /// Run all tasks
+        /// </summary>
         static public void Do()
         {
             List<Person> pers = new List<Person>();
