@@ -1,0 +1,7 @@
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\PersonStudentTeacher\bin\Debug\PersonStudentTeacher.exe.config
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\PersonStudentTeacher\bin\Debug\PersonStudentTeacher.exe
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\PersonStudentTeacher\bin\Debug\PersonStudentTeacher.pdb
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\PersonStudentTeacher\obj\Debug\PersonStudentTeacher.csprojAssemblyReference.cache
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\PersonStudentTeacher\obj\Debug\PersonStudentTeacher.csproj.CoreCompileInputs.cache
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\PersonStudentTeacher\obj\Debug\PersonStudentTeacher.exe
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\PersonStudentTeacher\obj\Debug\PersonStudentTeacher.pdb
