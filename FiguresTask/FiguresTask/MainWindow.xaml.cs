@@ -184,11 +184,9 @@ namespace Figures
 
             if (pol != null)
             {
-
                 selectedPolygon = pol;
                 selectPoint = Mouse.GetPosition(sender as IInputElement);
                 dragging = true;
-
             }
         }
     }
