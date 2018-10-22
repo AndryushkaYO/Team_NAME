@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 
 namespace Figures
 {
+
     /// <summary>
     /// Interaction logic for ColorPickWindow.xaml
     /// </summary>
