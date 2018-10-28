@@ -56,5 +56,23 @@ namespace UnitTests
             Assert.AreEqual(2, pol[1].StrokeThickness);
             Assert.AreEqual(HorizontalAlignment.Left, pol[0].HorizontalAlignment);
         }
+
+        //Test Get All function
+        [TestMethod]
+        public void ShapesRepository_Remove_RemoveAll_Test()
+        {
+            Polygon polygon1 = new Polygon();
+            Polygon polygon2 = new Polygon();
+            Polygon polygon3 = new Polygon();
+            ShapesRepository arr = new ShapesRepository();
+            arr.Add(polygon1);
+            arr.Add(polygon2);
+            arr.Remove(polygon2);
+            Assert.AreEqual(1, arr.Polygons.Count);
+            arr.Add(polygon2);
+            arr.Add(polygon3);
+            arr.RemoveAll();
+            Assert.AreEqual(0, arr.Polygons.Count);
+        }
     }
 }
