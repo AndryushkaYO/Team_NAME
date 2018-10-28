@@ -11,7 +11,7 @@ using Figures.DataAcces;
 
 namespace Figures.Services
 {
-    class PolygonsService
+    public class PolygonsService
     {
         public ShapesRepository repo = new ShapesRepository();
         public void SerealizeAll(string path)
