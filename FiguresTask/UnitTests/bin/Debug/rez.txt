@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<ArrayOfPolygonModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <PolygonModel>
+    <Points>
+      <Point>
+        <X>1</X>
+        <Y>50</Y>
+      </Point>
+      <Point>
+        <X>10</X>
+        <Y>80</Y>
+      </Point>
+      <Point>
+        <X>50</X>
+        <Y>50</Y>
+      </Point>
+    </Points>
+    <Color>
+      <A>255</A>
+      <R>32</R>
+      <G>178</G>
+      <B>170</B>
+      <ScA>1</ScA>
+      <ScR>0.0144438436</ScR>
+      <ScG>0.4452012</ScG>
+      <ScB>0.401977777</ScB>
+    </Color>
+    <Stroke>5</Stroke>
+  </PolygonModel>
+</ArrayOfPolygonModel>

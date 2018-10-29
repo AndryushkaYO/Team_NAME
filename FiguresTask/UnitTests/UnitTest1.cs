@@ -44,9 +44,10 @@ namespace UnitTests
         //Test Get All function
         [TestMethod]
         public void ShapesRepository_GetAll_Test()
-        {   Polygon polygon1 = new Polygon();
+        {
+            Polygon polygon1 = new Polygon();
             Polygon polygon2 = new Polygon();
-           
+
             polygon2.StrokeThickness = 2;
             polygon1.HorizontalAlignment = HorizontalAlignment.Left;
             ShapesRepository arr = new ShapesRepository();
@@ -88,8 +89,8 @@ namespace UnitTests
             points_arr.Add(Point2);
             points_arr.Add(Point3);
             Color color = new Color();
-            color= Color.FromRgb(255, 0, 0);
-            PolygonModel polygon2 = new PolygonModel(points_arr, color,2);
+            color = Color.FromRgb(255, 0, 0);
+            PolygonModel polygon2 = new PolygonModel(points_arr, color, 2);
             polygon1.Stroke = 2;
             Assert.AreNotEqual(3, polygon1.Stroke);
             Assert.AreEqual(3, polygon2.Points.Count);
@@ -97,5 +98,30 @@ namespace UnitTests
             Assert.AreEqual(color, polygon2.Color);
         }
 
+
+        //Polygon Service Test
+        [TestMethod]
+        public void PolygonService_SerializeAll_DeseriallizeAll_Test()
+        {
+            Polygon myPolygon = new Polygon();
+            myPolygon.Stroke = Brushes.Black;
+            myPolygon.Fill = Brushes.LightSeaGreen;
+            myPolygon.StrokeThickness = 5;            
+            Point Point1 = new Point(1, 50);
+            Point Point2 = new Point(10, 80);
+            Point Point3 = new Point(50, 50);
+            PointCollection myPointCollection = new PointCollection();
+            myPointCollection.Add(Point1);
+            myPointCollection.Add(Point2);
+            myPointCollection.Add(Point3);
+            myPolygon.Points = myPointCollection;
+            PolygonsService ps = new PolygonsService();
+            ps.repo.Add(myPolygon);
+            string path = "C:/Users/Hp/Desktop/Team_NAME/FiguresTask/UnitTests/bin/Debug/rez.txt";
+            ps.SerealizeAll(path);
+            List<Polygon> polArr = (ps.DeserializeAll(path)).ToList();
+            //Assert.AreEqual(1, polArr.Count);
+            Assert.AreEqual(5, polArr[0].StrokeThickness);
+        }
     }
 }
