@@ -57,7 +57,7 @@ namespace UnitTests
             Assert.AreEqual(HorizontalAlignment.Left, pol[0].HorizontalAlignment);
         }
 
-        //Test Get All function
+        //Test Remove and RemoveAll function
         [TestMethod]
         public void ShapesRepository_Remove_RemoveAll_Test()
         {
@@ -74,5 +74,28 @@ namespace UnitTests
             arr.RemoveAll();
             Assert.AreEqual(0, arr.Polygons.Count);
         }
+
+        //Polygon Model Test
+        [TestMethod]
+        public void PolygonModel_Test()
+        {
+            PolygonModel polygon1 = new PolygonModel();
+            Point Point1 = new Point(1, 50);
+            Point Point2 = new Point(10, 80);
+            Point Point3 = new Point(50, 50);
+            List<Point> points_arr = new List<Point>();
+            points_arr.Add(Point1);
+            points_arr.Add(Point2);
+            points_arr.Add(Point3);
+            Color color = new Color();
+            color= Color.FromRgb(255, 0, 0);
+            PolygonModel polygon2 = new PolygonModel(points_arr, color,2);
+            polygon1.Stroke = 2;
+            Assert.AreNotEqual(3, polygon1.Stroke);
+            Assert.AreEqual(3, polygon2.Points.Count);
+            Assert.AreEqual(2, polygon2.Stroke);
+            Assert.AreEqual(color, polygon2.Color);
+        }
+
     }
 }
