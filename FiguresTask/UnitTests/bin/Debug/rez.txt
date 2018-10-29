@@ -21,9 +21,9 @@
       <G>178</G>
       <B>170</B>
       <ScA>1</ScA>
-      <ScR>0.0144438436</ScR>
-      <ScG>0.4452012</ScG>
-      <ScB>0.401977777</ScB>
+      <ScR>0.0144438446</ScR>
+      <ScG>0.445201218</ScG>
+      <ScB>0.4019778</ScB>
     </Color>
     <Stroke>5</Stroke>
   </PolygonModel>

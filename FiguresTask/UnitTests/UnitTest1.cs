@@ -119,9 +119,30 @@ namespace UnitTests
             ps.repo.Add(myPolygon);
             string path = "C:/Users/Hp/Desktop/Team_NAME/FiguresTask/UnitTests/bin/Debug/rez.txt";
             ps.SerealizeAll(path);
-            List<Polygon> polArr = (ps.DeserializeAll(path)).ToList();
-            //Assert.AreEqual(1, polArr.Count);
+            List<Polygon> polArr = (ps.DeserializeAll(path)).ToList();            
             Assert.AreEqual(5, polArr[0].StrokeThickness);
         }
+
+        //Get Polygon Test
+        [TestMethod]
+        public void PolygonService_GetPolygon_Test()
+        {            
+            Point Point1 = new Point(1, 50);
+            Point Point2 = new Point(10, 80);
+            Point Point3 = new Point(50, 50);
+            List<Point> pointsList = new List<Point>();
+            pointsList.Add(Point1);
+            pointsList.Add(Point2);
+            pointsList.Add(Point3);
+            Color color = new Color();
+            color = Color.FromRgb(255, 0, 0);
+            PolygonModel pm = new PolygonModel(pointsList, color, 1);
+            PolygonsService ps = new PolygonsService();   
+            PrivateObject priv = new PrivateObject(ps);
+            object myPolygon = priv.Invoke("GetPolygon",pm);
+
+            Assert.IsNotNull(myPolygon);
+        }
+
     }
 }
