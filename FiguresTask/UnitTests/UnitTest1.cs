@@ -137,12 +137,18 @@ namespace UnitTests
             Color color = new Color();
             color = Color.FromRgb(255, 0, 0);
             PolygonModel pm = new PolygonModel(pointsList, color, 1);
-            PolygonsService ps = new PolygonsService();   
-            PrivateObject priv = new PrivateObject(ps);
-            object myPolygon = priv.Invoke("GetPolygon",pm);
-
-            Assert.IsNotNull(myPolygon);
+            PolygonsService ps = new PolygonsService();               
+            Polygon myPolygon = ps.GetPolygon(pm);
+            Assert.AreEqual(myPolygon.StrokeThickness, 1);
         }
 
+
+        //MainWindow Test
+        [TestMethod]
+        public void MainWindow_Test()
+        {
+            MainWindow window = new MainWindow();
+
+        }
     }
 }

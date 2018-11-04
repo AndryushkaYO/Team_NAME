@@ -93,12 +93,12 @@ namespace Figures
 
         }
 
-        private double GetDistance(Point p1, Point p2)
+        public double GetDistance(Point p1, Point p2)
         {
             return Math.Sqrt(Math.Pow(p1.X - p2.X, 2) + Math.Pow(p1.Y - p2.Y, 2));
         }
 
-        private Line DrawLine(Point newPoint)
+        public Line DrawLine(Point newPoint)
         {
             Line newLine = new Line
             {
@@ -112,7 +112,7 @@ namespace Figures
             return newLine;
         }
 
-        private void CreateNewPolygon()
+        public void CreateNewPolygon()
         {
             Polygon newPolygon = new Polygon();
             newPolygon.Points = this.points.Clone();

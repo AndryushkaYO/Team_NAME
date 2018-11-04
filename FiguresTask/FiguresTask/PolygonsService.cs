@@ -25,7 +25,7 @@ namespace Figures.Services
                 formatter.Serialize(fs, points);
             }
         }
-        private Polygon GetPolygon(PolygonModel xmlPolygon)
+        public Polygon GetPolygon(PolygonModel xmlPolygon)
         {
             return new Polygon()
             {
