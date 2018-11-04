@@ -8,9 +8,9 @@ using System.Windows.Shapes;
 
 namespace Figures.DataAcces
 {
-    class ShapesRepository : IRepository<Polygon>
+    public class ShapesRepository : IRepository<Polygon>
     {
-        private List<Polygon> Polygons = new List<Polygon>();
+        public List<Polygon> Polygons = new List<Polygon>();
         public void Add(Polygon item)
         {
            Polygons.Add(item);

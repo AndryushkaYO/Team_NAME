@@ -11,7 +11,7 @@ using Figures.DataAcces;
 
 namespace Figures.Services
 {
-    class PolygonsService
+    public class PolygonsService
     {
         public ShapesRepository repo = new ShapesRepository();
         public void SerealizeAll(string path)
@@ -25,7 +25,7 @@ namespace Figures.Services
                 formatter.Serialize(fs, points);
             }
         }
-        private Polygon GetPolygon(PolygonModel xmlPolygon)
+        public Polygon GetPolygon(PolygonModel xmlPolygon)
         {
             return new Polygon()
             {

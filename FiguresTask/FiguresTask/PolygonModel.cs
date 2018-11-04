@@ -8,7 +8,7 @@ using System.Windows.Media;
 
 namespace Figures.DataAcces
 {
-    class PolygonModel
+    public class PolygonModel
     {
         public List<Point> Points = new List<Point>();
         public Color Color { get; set; }
