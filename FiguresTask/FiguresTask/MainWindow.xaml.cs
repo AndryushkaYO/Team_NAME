@@ -42,9 +42,10 @@ namespace Figures
             InitializeComponent();
             MainCanvas.Focus();
             MainCanvas.MouseUp += OnMouseUp;
-            MainCanvas.MouseMove += PolygonDrag;            
-            MainCanvas.KeyUp += KeyboardDragging;
+            MainCanvas.MouseMove += PolygonDrag;     
+       
             polygonesList.ItemsSource = polygons;
+            MainCanvas.KeyUp += KeyboardDragging;
         }
 
         public void CleanCanvas()
@@ -56,11 +57,11 @@ namespace Figures
             dragging = false;
             selectedPolygon = null;
         }
-        public void KeyboardDragging(object sender, KeyEventArgs e)
+        private void KeyboardDragging(object sender, KeyEventArgs e)
         {
             if (selectedPolygon != null)
             {
-                if (e.Key == Key.Up)
+                if (e.Key == Key.Down)
                 {
                     var points = selectedPolygon.Points;
                     PointCollection newPoints = new PointCollection();
@@ -71,7 +72,7 @@ namespace Figures
 
                     selectedPolygon.Points = newPoints;
                 }
-                if (e.Key == Key.Down)
+                if (e.Key == Key.Up)
                 {
                     var points = selectedPolygon.Points;
                     PointCollection newPoints = new PointCollection();

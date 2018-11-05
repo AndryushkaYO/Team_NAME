@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Figures"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        PreviewKeyDown="KeyboardDragging">
     <Window.CommandBindings>
         <CommandBinding Command="New" Executed="NewCanvas" />
         <CommandBinding Command="Open" Executed="OpenCanvas" />
@@ -33,7 +34,7 @@
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0">
             <Menu DockPanel.Dock="Top">
-                <MenuItem Header="_File">
+                <MenuItem Header="_File" Focusable="False">
                     <MenuItem Header="_New" Command="New"/>
                     <MenuItem Header="_Open" Command="Open"/>
                     <MenuItem Header="_Save" Command="Save"/>
@@ -47,7 +48,9 @@
         <Canvas Grid.Row="1"
                 MouseLeftButtonDown="AddPoint"
                 MouseRightButtonDown="SelectPolygon"
+                PreviewKeyDown="KeyboardDragging"
                 Name="MainCanvas"
+                Focusable="True"
                 Background="Transparent"
                 ></Canvas>
     </Grid>
