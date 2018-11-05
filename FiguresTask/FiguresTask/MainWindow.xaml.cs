@@ -57,7 +57,13 @@ namespace Figures
 
         public void OnMouseUp(object sender, MouseButtonEventArgs e)
         {
+            if (dragging)
+            {
+                Canvas.SetLeft(selectedPolygon, e.GetPosition(MainCanvas).X - selectPoint.X);
+                Canvas.SetTop(selectedPolygon, e.GetPosition(MainCanvas).Y - selectPoint.Y);
+            }
             dragging = false;
+            
         }
 
         public void PolygonDrag(object sender, MouseEventArgs e)
@@ -186,7 +192,7 @@ namespace Figures
             {
 
                 selectedPolygon = pol;
-                selectPoint = Mouse.GetPosition(sender as IInputElement);
+                selectPoint = Mouse.GetPosition(MainCanvas);
                 dragging = true;
 
             }

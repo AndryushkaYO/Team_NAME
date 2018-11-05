@@ -32,3 +32,37 @@ C:\Users\vova1\OneDrive\Desktop\Team_NAME\FiguresTask\FiguresTask\obj\Debug\Figu
 C:\Users\vova1\OneDrive\Desktop\Team_NAME\FiguresTask\FiguresTask\obj\Debug\FiguresTask.csproj.CopyComplete
 C:\Users\vova1\OneDrive\Desktop\Team_NAME\FiguresTask\FiguresTask\obj\Debug\FiguresTask.exe
 C:\Users\vova1\OneDrive\Desktop\Team_NAME\FiguresTask\FiguresTask\obj\Debug\FiguresTask.pdb
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\FiguresTask\FiguresTask\bin\Debug\FiguresTask.exe.config
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\FiguresTask\FiguresTask\bin\Debug\FiguresTask.exe
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\FiguresTask\FiguresTask\bin\Debug\FiguresTask.pdb
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\FiguresTask\FiguresTask\bin\Debug\Xceed.Wpf.AvalonDock.dll
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\FiguresTask\FiguresTask\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Aero.dll
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\FiguresTask\FiguresTask\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Metro.dll
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\FiguresTask\FiguresTask\bin\Debug\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\FiguresTask\FiguresTask\bin\Debug\Xceed.Wpf.DataGrid.dll
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\FiguresTask\FiguresTask\bin\Debug\Xceed.Wpf.Toolkit.dll
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\FiguresTask\FiguresTask\bin\Debug\de\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\FiguresTask\FiguresTask\bin\Debug\es\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\FiguresTask\FiguresTask\bin\Debug\fr\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\FiguresTask\FiguresTask\bin\Debug\hu\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\FiguresTask\FiguresTask\bin\Debug\it\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\FiguresTask\FiguresTask\bin\Debug\pt-BR\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\FiguresTask\FiguresTask\bin\Debug\ro\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\FiguresTask\FiguresTask\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\FiguresTask\FiguresTask\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\FiguresTask\FiguresTask\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\FiguresTask\FiguresTask\obj\Debug\FiguresTask.csprojAssemblyReference.cache
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\FiguresTask\FiguresTask\obj\Debug\ColorPickWindow.g.cs
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\FiguresTask\FiguresTask\obj\Debug\MainWindow.g.cs
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\FiguresTask\FiguresTask\obj\Debug\App.g.cs
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\FiguresTask\FiguresTask\obj\Debug\FiguresTask_MarkupCompile.cache
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\FiguresTask\FiguresTask\obj\Debug\FiguresTask_MarkupCompile.lref
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\FiguresTask\FiguresTask\obj\Debug\ColorPickWindow.baml
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\FiguresTask\FiguresTask\obj\Debug\MainWindow.baml
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\FiguresTask\FiguresTask\obj\Debug\FiguresTask.g.resources
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\FiguresTask\FiguresTask\obj\Debug\FiguresTask.Properties.Resources.resources
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\FiguresTask\FiguresTask\obj\Debug\FiguresTask.csproj.GenerateResource.cache
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\FiguresTask\FiguresTask\obj\Debug\FiguresTask.csproj.CoreCompileInputs.cache
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\FiguresTask\FiguresTask\obj\Debug\FiguresTask.csproj.CopyComplete
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\FiguresTask\FiguresTask\obj\Debug\FiguresTask.exe
+C:\Users\bogda\OneDrive\Documents\Visual Studio 2017\Projects\Новая папка\Team_NAME\FiguresTask\FiguresTask\obj\Debug\FiguresTask.pdb
