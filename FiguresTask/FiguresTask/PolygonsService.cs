@@ -16,39 +16,62 @@ namespace Figures.Services
         public ShapesRepository repo = new ShapesRepository();
         public void SerealizeAll(string path)
         {
-            IEnumerable<Polygon> allPolygons = repo.GetAll();
-            var points = allPolygons.Select(polygon => new PolygonModel(polygon.Points.ToList(), ((SolidColorBrush)polygon.Fill).Color, polygon.StrokeThickness)).ToArray();
-            XmlSerializer formatter = new XmlSerializer(typeof(PolygonModel[]));
-
-            using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
+            if (path != "" && path != null)
             {
-                formatter.Serialize(fs, points);
+                IEnumerable<Polygon> allPolygons = repo.GetAll();
+                var points = allPolygons.Select(polygon => new PolygonModel(polygon.Points.ToList(), ((SolidColorBrush)polygon.Fill).Color, polygon.StrokeThickness)).ToArray();
+                XmlSerializer formatter = new XmlSerializer(typeof(PolygonModel[]));
+
+                using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
+                {
+                    formatter.Serialize(fs, points);
+                }
             }
+            else
+            {
+                if (path == "")
+                    throw new ArgumentException("Path to serealization file was set incorrectly");
+                else
+                    throw new ArgumentException("There was no path to serealization file");
+            }
+
         }
         public Polygon GetPolygon(PolygonModel xmlPolygon)
         {
-            return new Polygon()
+            if (xmlPolygon != null)
             {
-                Points = new PointCollection(xmlPolygon.Points),
-                StrokeThickness = xmlPolygon.Stroke,
-                Fill = new SolidColorBrush(xmlPolygon.Color),
-                Stroke = new SolidColorBrush(Colors.Black)
-            };
+                return new Polygon()
+                {
+                    Points = new PointCollection(xmlPolygon.Points),
+                    StrokeThickness = xmlPolygon.Stroke,
+                    Fill = new SolidColorBrush(xmlPolygon.Color),
+                    Stroke = new SolidColorBrush(Colors.Black)
+                };
+            }
+            else
+                throw new ArgumentException("There was no Polygon to get.");
         }
         public IEnumerable<Polygon> DeserializeAll(string path)
         {
-            XmlSerializer formatter = new XmlSerializer(typeof(PolygonModel[]));
-            using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
+            try
             {
-                List<PolygonModel> xmlPolygons = ((PolygonModel[])formatter.Deserialize(fs)).ToList();
-                List<Polygon> newPolygons = new List<Polygon>();
-                foreach (var xmlPolygon in xmlPolygons)
+                XmlSerializer formatter = new XmlSerializer(typeof(PolygonModel[]));
+                using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
                 {
-                    newPolygons.Add(this.GetPolygon(xmlPolygon));
-                }
+                    List<PolygonModel> xmlPolygons = ((PolygonModel[])formatter.Deserialize(fs)).ToList();
+                    List<Polygon> newPolygons = new List<Polygon>();
+                    foreach (var xmlPolygon in xmlPolygons)
+                    {
+                        newPolygons.Add(this.GetPolygon(xmlPolygon));
+                    }
 
-                repo.AddRange(newPolygons);
-                return repo.GetAll();
+                    repo.AddRange(newPolygons);
+                    return repo.GetAll();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(ex.ToString());
             }
         }
     }

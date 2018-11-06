@@ -22,14 +22,29 @@ namespace Figures
     {
         public ColorPickWindow()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception e)
+            {
+                throw new ArgumentException(e.ToString());
+            }
         }
         private void ColorPicker_OnSelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
         {
-            if (e.NewValue != null)
+            try
             {
-                Application.Current.Windows.OfType<MainWindow>().FirstOrDefault().polygonColor = e.NewValue.Value;
+                if (e.NewValue != null)
+                {
+                    Application.Current.Windows.OfType<MainWindow>().FirstOrDefault().polygonColor = e.NewValue.Value;
+                }
             }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(ex.ToString());
+            }
+
         }
     }
 }
