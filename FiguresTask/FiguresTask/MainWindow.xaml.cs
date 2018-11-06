@@ -40,9 +40,12 @@ namespace Figures
         {
             this.DataContext = this;
             InitializeComponent();
+            MainCanvas.Focus();
             MainCanvas.MouseUp += OnMouseUp;
-            MainCanvas.MouseMove += PolygonDrag;
+            MainCanvas.MouseMove += PolygonDrag;     
+       
             polygonesList.ItemsSource = polygons;
+            MainCanvas.KeyUp += KeyboardDragging;
         }
 
         public void CleanCanvas()
@@ -54,10 +57,62 @@ namespace Figures
             dragging = false;
             selectedPolygon = null;
         }
+        private void KeyboardDragging(object sender, KeyEventArgs e)
+        {
+            if (selectedPolygon != null)
+            {
+                if (e.Key == Key.Down)
+                {
+                    var points = selectedPolygon.Points;
+                    PointCollection newPoints = new PointCollection();
+                    foreach (var point in points)
+                    {
+                        newPoints.Add(new Point(point.X, point.Y + 5));
+                    }
+
+                    selectedPolygon.Points = newPoints;
+                }
+                if (e.Key == Key.Up)
+                {
+                    var points = selectedPolygon.Points;
+                    PointCollection newPoints = new PointCollection();
+                    foreach (var point in points)
+                    {
+                        newPoints.Add(new Point(point.X, point.Y - 5));
+                    }
+
+                    selectedPolygon.Points = newPoints;
+                }
+                if (e.Key == Key.Left)
+                {
+                    var points = selectedPolygon.Points;
+                    PointCollection newPoints = new PointCollection();
+                    foreach (var point in points)
+                    {
+                        newPoints.Add(new Point(point.X-5, point.Y));
+                    }
+
+                    selectedPolygon.Points = newPoints;
+                }
+                if (e.Key == Key.Right)
+                {
+                    var points = selectedPolygon.Points;
+                    PointCollection newPoints = new PointCollection();
+                    foreach (var point in points)
+                    {
+                        newPoints.Add(new Point(point.X+5, point.Y ));
+                    }
+
+                    selectedPolygon.Points = newPoints;
+                }
+                
+            }
+        }
 
         public void OnMouseUp(object sender, MouseButtonEventArgs e)
         {
             dragging = false;
+            if (selectedPolygon != null) selectedPolygon.StrokeThickness = 1;
         }
 
         public void PolygonDrag(object sender, MouseEventArgs e)
@@ -67,6 +122,8 @@ namespace Figures
                 Canvas.SetLeft(selectedPolygon, e.GetPosition(MainCanvas).X - selectPoint.X);
                 Canvas.SetTop(selectedPolygon, e.GetPosition(MainCanvas).Y - selectPoint.Y);
             }
+            
+
         }
 
         public void AddPoint(object sender, MouseButtonEventArgs e)
@@ -186,8 +243,10 @@ namespace Figures
             {
                 selectedPolygon = pol;
                 selectPoint = Mouse.GetPosition(sender as IInputElement);
+                selectedPolygon.StrokeThickness = 6;
                 dragging = true;
             }
         }
+        
     }
 }
