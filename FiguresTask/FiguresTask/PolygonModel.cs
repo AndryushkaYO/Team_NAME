@@ -15,10 +15,15 @@ namespace Figures.DataAcces
         public double Stroke { get; set; }
 
         public PolygonModel() { }
-
+        /// <summary>
+        /// Public constructor
+        /// </summary>
+        /// <param name="points"></param>
+        /// <param name="color"></param>
+        /// <param name="stroke"></param>
         public PolygonModel(List<Point> points, Color color, double stroke)
         {
-            if (points != null && color != null && stroke != null)
+            if (points != null && color != null)
             {
                 Points = points;
                 Color = color;
