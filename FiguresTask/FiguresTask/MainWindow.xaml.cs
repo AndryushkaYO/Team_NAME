@@ -38,24 +38,39 @@ namespace Figures
 
         public MainWindow()
         {
-            this.DataContext = this;
-            InitializeComponent();
-            MainCanvas.Focus();
-            MainCanvas.MouseUp += OnMouseUp;
-            MainCanvas.MouseMove += PolygonDrag;     
-       
-            polygonesList.ItemsSource = polygons;
-            MainCanvas.KeyUp += KeyboardDragging;
+            
+            try
+            {
+                this.DataContext = this;
+                InitializeComponent();
+                MainCanvas.Focus();
+                MainCanvas.MouseUp += OnMouseUp;
+                MainCanvas.MouseMove += PolygonDrag;
+
+                polygonesList.ItemsSource = polygons;
+                MainCanvas.KeyUp += KeyboardDragging;
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(ex.ToString());
+            }
         }
 
         public void CleanCanvas()
         {
-            MainCanvas.Children.Clear();
-            points.Clear();
-            lines.Clear();
-            polygons.Clear();
-            dragging = false;
-            selectedPolygon = null;
+            try
+            {
+                MainCanvas.Children.Clear();
+                points.Clear();
+                lines.Clear();
+                polygons.Clear();
+                dragging = false;
+                selectedPolygon = null;
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(ex.ToString());
+            }
         }
         private void KeyboardDragging(object sender, KeyEventArgs e)
         {
@@ -152,99 +167,146 @@ namespace Figures
 
         public double GetDistance(Point p1, Point p2)
         {
-            return Math.Sqrt(Math.Pow(p1.X - p2.X, 2) + Math.Pow(p1.Y - p2.Y, 2));
+            if (p1 != null && p2 != null)
+                return Math.Sqrt(Math.Pow(p1.X - p2.X, 2) + Math.Pow(p1.Y - p2.Y, 2));
+            else
+            {
+                if (p1 == null)
+                    throw new ArgumentException("First point was set to null");
+                else
+                    throw new ArgumentException("Second point was set to null");
+            }
         }
 
         public Line DrawLine(Point newPoint)
         {
-            Line newLine = new Line
+            if (newPoint != null)
             {
-                X1 = points.Last().X,
-                Y1 = points.Last().Y,
-                X2 = newPoint.X,
-                Y2 = newPoint.Y
-            };
-            newLine.Stroke = Brushes.Black;
-            this.MainCanvas.Children.Add(newLine);
-            return newLine;
+                Line newLine = new Line
+                {
+                    X1 = points.Last().X,
+                    Y1 = points.Last().Y,
+                    X2 = newPoint.X,
+                    Y2 = newPoint.Y
+                };
+                newLine.Stroke = Brushes.Black;
+                this.MainCanvas.Children.Add(newLine);
+                return newLine;
+            }
+            else
+                throw new ArgumentException("Second point for a line was set to null");
+
         }
 
         public void CreateNewPolygon()
         {
-            Polygon newPolygon = new Polygon();
-            newPolygon.Points = this.points.Clone();
-            ColorPickWindow window = new ColorPickWindow();
-            window.ShowDialog();
-            newPolygon.Fill = new SolidColorBrush(polygonColor);
-            MainCanvas.Children.Add(newPolygon);
-            newPolygon.StrokeThickness = 2;
-            newPolygon.Stroke = new SolidColorBrush(Colors.Black);
-            polygons.Add(newPolygon);
-
+            try
+            {
+                Polygon newPolygon = new Polygon();
+                newPolygon.Points = this.points.Clone();
+                ColorPickWindow window = new ColorPickWindow();
+                window.ShowDialog();
+                newPolygon.Fill = new SolidColorBrush(polygonColor);
+                MainCanvas.Children.Add(newPolygon);
+                newPolygon.StrokeThickness = 2;
+                newPolygon.Stroke = new SolidColorBrush(Colors.Black);
+                polygons.Add(newPolygon);
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(ex.ToString());
+            }
         }
 
         private void NewCanvas(object sender, ExecutedRoutedEventArgs e)
         {
-            CleanCanvas();
-            service.repo.RemoveAll();
+            try
+            {
+                CleanCanvas();
+                service.repo.RemoveAll();
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(ex.ToString());
+            }
         }
 
         private void OpenCanvas(object sender, ExecutedRoutedEventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Text file (*.xml)|*.xml";
-            dialog.ShowDialog();
-            if (dialog.FileName != string.Empty)
+            try
             {
-                string fullPath = System.IO.Path.GetFullPath(dialog.FileName);
-                var polygons = this.service.DeserializeAll(fullPath);
-                CleanCanvas();
-                foreach (var polygon in polygons)
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Filter = "Text file (*.xml)|*.xml";
+                dialog.ShowDialog();
+                if (dialog.FileName != string.Empty)
                 {
-                    this.polygons.Add(polygon);
-                    MainCanvas.Children.Add(polygon);
+                    string fullPath = System.IO.Path.GetFullPath(dialog.FileName);
+                    var polygons = this.service.DeserializeAll(fullPath);
+                    CleanCanvas();
+                    foreach (var polygon in polygons)
+                    {
+                        this.polygons.Add(polygon);
+                        MainCanvas.Children.Add(polygon);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(ex.ToString());
             }
         }
 
         private void SaveCanvas(object sender, ExecutedRoutedEventArgs e)
         {
-            SaveFileDialog saveFileWindow = new SaveFileDialog();
-            saveFileWindow.Filter = "Text file (*.xml)|*.xml";
-            saveFileWindow.ShowDialog();
-            if (saveFileWindow.FileName != string.Empty)
+            try
             {
-                string path = System.IO.Path.GetFullPath(saveFileWindow.FileName);
-                service.SerealizeAll(path);
+                SaveFileDialog saveFileWindow = new SaveFileDialog();
+                saveFileWindow.Filter = "Text file (*.xml)|*.xml";
+                saveFileWindow.ShowDialog();
+                if (saveFileWindow.FileName != string.Empty)
+                {
+                    string path = System.IO.Path.GetFullPath(saveFileWindow.FileName);
+                    service.SerealizeAll(path);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(ex.ToString());
             }
         }
 
         private void SelectPolygon(object sender, RoutedEventArgs e)
         {
-            var MouseOverItem = e.OriginalSource;
-            Polygon pol = MouseOverItem as Polygon;
-            if (MouseOverItem is MenuItem)
+            try
             {
-                Polygon fromMenu = (MouseOverItem as MenuItem).DataContext as Polygon;
-
-                if (fromMenu != null)
+                var MouseOverItem = e.OriginalSource;
+                Polygon pol = MouseOverItem as Polygon;
+                if (MouseOverItem is MenuItem)
                 {
-                    MainCanvas.Children.Add(new Polygon
+                    Polygon fromMenu = (MouseOverItem as MenuItem).DataContext as Polygon;
+
+                    if (fromMenu != null)
                     {
-                        Points = fromMenu.Points.Clone(),
-                        Fill = fromMenu.Fill,
-                        Stroke = fromMenu.Stroke,
-                        StrokeThickness = fromMenu.StrokeThickness
-                    });
+                        MainCanvas.Children.Add(new Polygon
+                        {
+                            Points = fromMenu.Points.Clone(),
+                            Fill = fromMenu.Fill,
+                            Stroke = fromMenu.Stroke,
+                            StrokeThickness = fromMenu.StrokeThickness
+                        });
+                    }
+                }
+
+                if (pol != null)
+                {
+                    selectedPolygon = pol;
+                    selectPoint = Mouse.GetPosition(sender as IInputElement);
+                    dragging = true;
                 }
             }
-
-            if (pol != null)
+            catch (Exception ex)
             {
-                selectedPolygon = pol;
-                selectPoint = Mouse.GetPosition(sender as IInputElement);
-                selectedPolygon.StrokeThickness = 6;
-                dragging = true;
+                throw new ArgumentException(ex.ToString());
             }
         }
         
