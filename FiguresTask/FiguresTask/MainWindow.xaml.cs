@@ -31,6 +31,7 @@ namespace Figures
         private const double MinDistBetweenPoints = 10f;
         private bool dragging = false;
         private Point selectPoint;
+        Point prevPoint;
 
         public Color polygonColor;
         public Polygon selectedPolygon;
@@ -40,7 +41,7 @@ namespace Figures
         /// </summary>
         public MainWindow()
         {
-            
+
             try
             {
                 this.DataContext = this;
@@ -48,7 +49,7 @@ namespace Figures
                 MainCanvas.Focus();
                 MainCanvas.MouseUp += OnMouseUp;
                 MainCanvas.MouseMove += PolygonDrag;
-
+                this.Title = "Untitled.xml";
                 polygonesList.ItemsSource = polygons;
                 MainCanvas.KeyUp += KeyboardDragging;
             }
@@ -85,7 +86,7 @@ namespace Figures
         {
             if (selectedPolygon != null)
             {
-               // selectedPolygon.StrokeThickness = 1;
+                // selectedPolygon.StrokeThickness = 1;
 
                 if (e.Key == Key.Down)
                 {
@@ -115,7 +116,7 @@ namespace Figures
                     PointCollection newPoints = new PointCollection();
                     foreach (var point in points)
                     {
-                        newPoints.Add(new Point(point.X-5, point.Y));
+                        newPoints.Add(new Point(point.X - 5, point.Y));
                     }
 
                     selectedPolygon.Points = newPoints;
@@ -126,12 +127,12 @@ namespace Figures
                     PointCollection newPoints = new PointCollection();
                     foreach (var point in points)
                     {
-                        newPoints.Add(new Point(point.X+5, point.Y ));
+                        newPoints.Add(new Point(point.X + 5, point.Y));
                     }
 
                     selectedPolygon.Points = newPoints;
                 }
-                
+
             }
         }
         /// <summary>
@@ -142,6 +143,7 @@ namespace Figures
         public void OnMouseUp(object sender, MouseButtonEventArgs e)
         {
             dragging = false;
+
             //if (selectedPolygon != null) selectedPolygon.StrokeThickness = 1;
         }
         /// <summary>
@@ -151,13 +153,23 @@ namespace Figures
         /// <param name="e"></param>
         public void PolygonDrag(object sender, MouseEventArgs e)
         {
+
             if (dragging)
             {
-                Canvas.SetLeft(selectedPolygon, e.GetPosition(MainCanvas).X - selectPoint.X);
-                Canvas.SetTop(selectedPolygon, e.GetPosition(MainCanvas).Y - selectPoint.Y);
+                //Canvas.SetLeft(selectedPolygon, e.GetPosition(MainCanvas).X - selectPoint.X);
+                //Canvas.SetTop(selectedPolygon, e.GetPosition(MainCanvas).Y - selectPoint.Y);
+                Point newPoint = e.GetPosition(MainCanvas);
+                double difX = newPoint.X - prevPoint.X;
+                double difY = newPoint.Y - prevPoint.Y;
+                var points = selectedPolygon.Points;
+                PointCollection newPoints = new PointCollection();
+                foreach (var point in points)
+                {
+                    newPoints.Add(new Point(point.X + difX, point.Y + difY));
+                }
+                selectedPolygon.Points = newPoints;
+                prevPoint = newPoint;
             }
-            
-
         }
         /// <summary>
         /// Add point by tapping mouse button
@@ -169,19 +181,6 @@ namespace Figures
             Point newPoint = e.GetPosition(this);
             if (points.Count >= 1)
             {
-
-                if (GetDistance(points.First(), newPoint) <= MinDistBetweenPoints)
-                {
-                    lines.Add(DrawLine(points.First()));
-                    CreateNewPolygon();
-                    points.Clear();
-                    foreach (var line in lines)
-                    {
-                        MainCanvas.Children.Remove(line);
-                    }
-                    lines.Clear();
-                    return;
-                }
                 lines.Add(DrawLine(newPoint));
             }
             points.Add(newPoint);
@@ -245,6 +244,7 @@ namespace Figures
                 newPolygon.StrokeThickness = 2;
                 newPolygon.Stroke = new SolidColorBrush(Colors.Black);
                 polygons.Add(newPolygon);
+                service.repo.Add(newPolygon);
             }
             catch (Exception ex)
             {
@@ -311,6 +311,9 @@ namespace Figures
                 saveFileWindow.ShowDialog();
                 if (saveFileWindow.FileName != string.Empty)
                 {
+                    string[] args = saveFileWindow.FileName.Split('\\');
+                    string title = args[args.Length - 1];
+                    Title = title;
                     string path = System.IO.Path.GetFullPath(saveFileWindow.FileName);
                     service.SerealizeAll(path);
                 }
@@ -321,6 +324,24 @@ namespace Figures
             }
         }
         /// <summary>
+        /// Draw Polygon
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void DrawPolygon(object sender, RoutedEventArgs e)
+        {
+                lines.Add(DrawLine(points.First()));
+                CreateNewPolygon();
+                points.Clear();
+                foreach (var line in lines)
+                {
+                    MainCanvas.Children.Remove(line);
+                }
+                lines.Clear();
+                return;
+        }
+
+        /// <summary>
         /// Chooses polygon or menu item 
         /// </summary>
         /// <param name="sender"></param>
@@ -329,8 +350,8 @@ namespace Figures
         {
             try
             {
-                
-               
+
+
                 var MouseOverItem = e.OriginalSource;
                 Polygon pol = MouseOverItem as Polygon;
                 if (MouseOverItem is MenuItem)
@@ -364,15 +385,16 @@ namespace Figures
                     selectedPolygon = pol;
                     selectedPolygon.StrokeThickness = 6;
                     selectPoint = Mouse.GetPosition(sender as IInputElement);
+                    prevPoint = selectPoint;
                     dragging = true;
                 }
-              
+
             }
             catch (Exception ex)
             {
                 throw new ArgumentException(ex.ToString());
             }
         }
-        
+
     }
 }
