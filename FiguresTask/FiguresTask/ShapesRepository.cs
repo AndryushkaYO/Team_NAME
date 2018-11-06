@@ -13,12 +13,20 @@ namespace Figures.DataAcces
         public List<Polygon> Polygons = new List<Polygon>();
         public void Add(Polygon item)
         {
-           Polygons.Add(item);
+            if (item != null)
+            {
+                Polygons.Add(item);
+            }
+            else
+                throw new ArgumentException("Impossible to Add unexisting polygon");
         }
 
         public void AddRange(IEnumerable<Polygon> items)
         {
-           Polygons.AddRange(items);
+            if (items != null)
+                Polygons.AddRange(items);
+            else
+                throw new ArgumentException("Impossible to get range between unexisting polygons or their points");
         }
 
 
@@ -29,7 +37,10 @@ namespace Figures.DataAcces
 
         public void Remove(Polygon item)
         {
-            Polygons.Remove(item);
+            if (item != null)
+                Polygons.Remove(item);
+            else
+                throw new ArgumentException("Impossible to remove unselected polygon");
         }
 
         public void RemoveAll()
