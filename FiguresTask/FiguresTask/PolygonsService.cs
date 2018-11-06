@@ -14,6 +14,10 @@ namespace Figures.Services
     public class PolygonsService
     {
         public ShapesRepository repo = new ShapesRepository();
+        /// <summary>
+        /// Serializes into XML
+        /// </summary>
+        /// <param name="path"></param>
         public void SerealizeAll(string path)
         {
             if (path != "" && path != null)
@@ -36,6 +40,11 @@ namespace Figures.Services
             }
 
         }
+        /// <summary>
+        /// Deserialize chosen polygon
+        /// </summary>
+        /// <param name="xmlPolygon"></param>
+        /// <returns>Polygon</returns>
         public Polygon GetPolygon(PolygonModel xmlPolygon)
         {
             if (xmlPolygon != null)
@@ -51,6 +60,11 @@ namespace Figures.Services
             else
                 throw new ArgumentException("There was no Polygon to get.");
         }
+        /// <summary>
+        /// Deserialize all Polygons
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns>IEnumerable<Polygon></returns>
         public IEnumerable<Polygon> DeserializeAll(string path)
         {
             try

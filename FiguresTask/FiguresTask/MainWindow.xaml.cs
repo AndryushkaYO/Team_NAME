@@ -35,7 +35,9 @@ namespace Figures
         public Color polygonColor;
         public Polygon selectedPolygon;
 
-
+        /// <summary>
+        /// Initialize component of main window
+        /// </summary>
         public MainWindow()
         {
             
@@ -55,7 +57,9 @@ namespace Figures
                 throw new ArgumentException(ex.ToString());
             }
         }
-
+        /// <summary>
+        /// Cleans canvas
+        /// </summary>
         public void CleanCanvas()
         {
             try
@@ -72,10 +76,17 @@ namespace Figures
                 throw new ArgumentException(ex.ToString());
             }
         }
+        /// <summary>
+        /// Drags polygon using keyboard buttons
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void KeyboardDragging(object sender, KeyEventArgs e)
         {
             if (selectedPolygon != null)
             {
+               // selectedPolygon.StrokeThickness = 1;
+
                 if (e.Key == Key.Down)
                 {
                     var points = selectedPolygon.Points;
@@ -123,13 +134,21 @@ namespace Figures
                 
             }
         }
-
+        /// <summary>
+        /// Stop holding mouse button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void OnMouseUp(object sender, MouseButtonEventArgs e)
         {
             dragging = false;
-            if (selectedPolygon != null) selectedPolygon.StrokeThickness = 1;
+            //if (selectedPolygon != null) selectedPolygon.StrokeThickness = 1;
         }
-
+        /// <summary>
+        /// Drag polygon using mouse
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void PolygonDrag(object sender, MouseEventArgs e)
         {
             if (dragging)
@@ -140,7 +159,11 @@ namespace Figures
             
 
         }
-
+        /// <summary>
+        /// Add point by tapping mouse button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void AddPoint(object sender, MouseButtonEventArgs e)
         {
             Point newPoint = e.GetPosition(this);
@@ -164,7 +187,12 @@ namespace Figures
             points.Add(newPoint);
 
         }
-
+        /// <summary>
+        /// Calculate distance between two points
+        /// </summary>
+        /// <param name="p1"></param>
+        /// <param name="p2"></param>
+        /// <returns>Double distance</returns>
         public double GetDistance(Point p1, Point p2)
         {
             if (p1 != null && p2 != null)
@@ -177,7 +205,11 @@ namespace Figures
                     throw new ArgumentException("Second point was set to null");
             }
         }
-
+        /// <summary>
+        /// Draws line connecting two points
+        /// </summary>
+        /// <param name="newPoint"></param>
+        /// <returns>Line</returns>
         public Line DrawLine(Point newPoint)
         {
             if (newPoint != null)
@@ -197,7 +229,9 @@ namespace Figures
                 throw new ArgumentException("Second point for a line was set to null");
 
         }
-
+        /// <summary>
+        /// Creates new polygon
+        /// </summary>
         public void CreateNewPolygon()
         {
             try
@@ -217,7 +251,11 @@ namespace Figures
                 throw new ArgumentException(ex.ToString());
             }
         }
-
+        /// <summary>
+        /// Creates new canvas
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NewCanvas(object sender, ExecutedRoutedEventArgs e)
         {
             try
@@ -230,7 +268,11 @@ namespace Figures
                 throw new ArgumentException(ex.ToString());
             }
         }
-
+        /// <summary>
+        /// Opens saved canvas
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OpenCanvas(object sender, ExecutedRoutedEventArgs e)
         {
             try
@@ -255,7 +297,11 @@ namespace Figures
                 throw new ArgumentException(ex.ToString());
             }
         }
-
+        /// <summary>
+        /// Saves actual canvars
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SaveCanvas(object sender, ExecutedRoutedEventArgs e)
         {
             try
@@ -274,11 +320,17 @@ namespace Figures
                 throw new ArgumentException(ex.ToString());
             }
         }
-
+        /// <summary>
+        /// Chooses polygon or menu item 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SelectPolygon(object sender, RoutedEventArgs e)
         {
             try
             {
+                
+               
                 var MouseOverItem = e.OriginalSource;
                 Polygon pol = MouseOverItem as Polygon;
                 if (MouseOverItem is MenuItem)
@@ -299,10 +351,22 @@ namespace Figures
 
                 if (pol != null)
                 {
+                    if (selectedPolygon != null)
+                    {
+                        foreach (var o in polygons)
+                        {
+                            if (selectedPolygon.Points == o.Points && o.Fill == selectedPolygon.Fill)
+                            {
+                                o.StrokeThickness = 1;
+                            }
+                        }
+                    }
                     selectedPolygon = pol;
+                    selectedPolygon.StrokeThickness = 6;
                     selectPoint = Mouse.GetPosition(sender as IInputElement);
                     dragging = true;
                 }
+              
             }
             catch (Exception ex)
             {

@@ -20,6 +20,9 @@ namespace Figures
     /// </summary>
     public partial class ColorPickWindow : Window
     {
+        /// <summary>
+        /// Initialize ColorPickWindow
+        /// </summary>
         public ColorPickWindow()
         {
             try
@@ -31,6 +34,11 @@ namespace Figures
                 throw new ArgumentException(e.ToString());
             }
         }
+        /// <summary>
+        /// Set chosen colour
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ColorPicker_OnSelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
         {
             try
