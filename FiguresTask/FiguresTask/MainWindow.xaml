@@ -36,8 +36,8 @@
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_File" Focusable="False">
                     <MenuItem Header="_New" Command="New"/>
-                    <MenuItem Header="_Open" Command="Open"/>
-                    <MenuItem Header="_Save" Command="Save"/>
+                    <MenuItem Header="_Open..." Command="Open"/>
+                    <MenuItem Header="_Save As..." Command="Save"/>
                 </MenuItem>
                 <MenuItem Header="_Shapes" x:Name="polygonesList" Grid.Row="1" 
                           ItemTemplate="{StaticResource listTemplate}" Click="SelectPolygon" />
@@ -52,7 +52,9 @@
                 Name="MainCanvas"
                 Focusable="True"
                 Background="Transparent"
-                ></Canvas>
+                >
+            <Button Content="Select Color..." Click="DrawPolygon" Canvas.Left="10" Canvas.Top="5" Width="75"/>
+        </Canvas>
     </Grid>
    
 </Window>
