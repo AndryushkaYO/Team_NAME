@@ -143,7 +143,7 @@ namespace Figures
         public void OnMouseUp(object sender, MouseButtonEventArgs e)
         {
             dragging = false;
-
+            this.Cursor = Cursors.Arrow;
             //if (selectedPolygon != null) selectedPolygon.StrokeThickness = 1;
         }
         /// <summary>
@@ -153,11 +153,10 @@ namespace Figures
         /// <param name="e"></param>
         public void PolygonDrag(object sender, MouseEventArgs e)
         {
-
+            
             if (dragging)
             {
-                //Canvas.SetLeft(selectedPolygon, e.GetPosition(MainCanvas).X - selectPoint.X);
-                //Canvas.SetTop(selectedPolygon, e.GetPosition(MainCanvas).Y - selectPoint.Y);
+                this.Cursor = Cursors.SizeAll;
                 Point newPoint = e.GetPosition(MainCanvas);
                 double difX = newPoint.X - prevPoint.X;
                 double difY = newPoint.Y - prevPoint.Y;
@@ -184,7 +183,6 @@ namespace Figures
                 lines.Add(DrawLine(newPoint));
             }
             points.Add(newPoint);
-
         }
         /// <summary>
         /// Calculate distance between two points
@@ -226,7 +224,6 @@ namespace Figures
             }
             else
                 throw new ArgumentException("Second point for a line was set to null");
-
         }
         /// <summary>
         /// Creates new polygon
@@ -331,6 +328,8 @@ namespace Figures
         /// <param name="e"></param>
         public void DrawPolygon(object sender, RoutedEventArgs e)
         {
+            if(lines.Count>1)
+            {
                 lines.Add(DrawLine(points.First()));
                 CreateNewPolygon();
                 points.Clear();
@@ -340,6 +339,7 @@ namespace Figures
                 }
                 lines.Clear();
                 return;
+            }
         }
 
         /// <summary>
@@ -351,8 +351,6 @@ namespace Figures
         {
             try
             {
-
-
                 var MouseOverItem = e.OriginalSource;
                 Polygon pol = MouseOverItem as Polygon;
                 if (MouseOverItem is MenuItem)
@@ -370,14 +368,11 @@ namespace Figures
                                     o.StrokeThickness = 1;
                                 }
                             }
-
                         }
-
                         selectedPolygon = fromMenu;
                         selectedPolygon.StrokeThickness = 6;
                     }
                 }
-
                 if (pol != null)
                 {
                     if (selectedPolygon != null)
@@ -396,13 +391,11 @@ namespace Figures
                     prevPoint = selectPoint;
                     dragging = true;
                 }
-
             }
             catch (Exception ex)
             {
                 throw new ArgumentException(ex.ToString());
             }
         }
-
     }
 }
