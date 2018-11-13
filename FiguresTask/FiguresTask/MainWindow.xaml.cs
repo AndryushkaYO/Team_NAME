@@ -143,7 +143,7 @@ namespace Figures
         public void OnMouseUp(object sender, MouseButtonEventArgs e)
         {
             dragging = false;
-
+            this.Cursor = Cursors.Arrow;
             //if (selectedPolygon != null) selectedPolygon.StrokeThickness = 1;
         }
         /// <summary>
@@ -153,9 +153,10 @@ namespace Figures
         /// <param name="e"></param>
         public void PolygonDrag(object sender, MouseEventArgs e)
         {
-
+            
             if (dragging)
             {
+                this.Cursor = Cursors.SizeAll;
                 //Canvas.SetLeft(selectedPolygon, e.GetPosition(MainCanvas).X - selectPoint.X);
                 //Canvas.SetTop(selectedPolygon, e.GetPosition(MainCanvas).Y - selectPoint.Y);
                 Point newPoint = e.GetPosition(MainCanvas);

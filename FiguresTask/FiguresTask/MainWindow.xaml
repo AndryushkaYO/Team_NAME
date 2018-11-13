@@ -55,7 +55,7 @@
                 >
 
         </Canvas>
-        <Button Grid.Row="2" Content="Draw" Click="DrawPolygon" Height="34" Margin="325,0,324,0"/>
+        <Button Cursor="Hand"  Grid.Row="2" Content="Draw" Click="DrawPolygon" Height="34" Margin="325,0,324,0"/>
     </Grid>
 
 </Window>
