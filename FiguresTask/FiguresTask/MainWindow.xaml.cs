@@ -157,8 +157,6 @@ namespace Figures
             if (dragging)
             {
                 this.Cursor = Cursors.SizeAll;
-                //Canvas.SetLeft(selectedPolygon, e.GetPosition(MainCanvas).X - selectPoint.X);
-                //Canvas.SetTop(selectedPolygon, e.GetPosition(MainCanvas).Y - selectPoint.Y);
                 Point newPoint = e.GetPosition(MainCanvas);
                 double difX = newPoint.X - prevPoint.X;
                 double difY = newPoint.Y - prevPoint.Y;
@@ -185,7 +183,6 @@ namespace Figures
                 lines.Add(DrawLine(newPoint));
             }
             points.Add(newPoint);
-
         }
         /// <summary>
         /// Calculate distance between two points
@@ -227,7 +224,6 @@ namespace Figures
             }
             else
                 throw new ArgumentException("Second point for a line was set to null");
-
         }
         /// <summary>
         /// Creates new polygon
@@ -355,8 +351,6 @@ namespace Figures
         {
             try
             {
-
-
                 var MouseOverItem = e.OriginalSource;
                 Polygon pol = MouseOverItem as Polygon;
                 if (MouseOverItem is MenuItem)
@@ -374,14 +368,11 @@ namespace Figures
                                     o.StrokeThickness = 1;
                                 }
                             }
-
                         }
-
                         selectedPolygon = fromMenu;
                         selectedPolygon.StrokeThickness = 6;
                     }
                 }
-
                 if (pol != null)
                 {
                     if (selectedPolygon != null)
@@ -400,13 +391,11 @@ namespace Figures
                     prevPoint = selectPoint;
                     dragging = true;
                 }
-
             }
             catch (Exception ex)
             {
                 throw new ArgumentException(ex.ToString());
             }
         }
-
     }
 }

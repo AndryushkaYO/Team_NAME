@@ -32,16 +32,18 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <DockPanel Grid.Row="0">
+        <DockPanel Grid.Row="0"
+                   Focusable="False"
+                   >
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_File" Focusable="False">
-                    <MenuItem Header="_New" Command="New"/>
-                    <MenuItem Header="_Open..." Command="Open"/>
-                    <MenuItem Header="_Save As..." Command="Save"/>
+                    <MenuItem Header="_New"  Command="New"/>
+                    <MenuItem Header="_Open..."  Command="Open"/>
+                    <MenuItem Header="_Save As..."  Command="Save"/>
                 </MenuItem>
-                <MenuItem Header="_Shapes" x:Name="polygonesList" Grid.Row="1" 
+                <MenuItem Header="_Shapes" x:Name="polygonesList" Focusable="False" Grid.Row="1" 
                           ItemTemplate="{StaticResource listTemplate}" Click="SelectPolygon" />
-                <MenuItem Header="_Save" Command="Save">
+                <MenuItem Header="_Save" Focusable="False" Command="Save">
                 </MenuItem>
             </Menu>
         </DockPanel>
@@ -50,12 +52,10 @@
                 MouseRightButtonDown="SelectPolygon"
                 PreviewKeyDown="KeyboardDragging"
                 Name="MainCanvas"
-                Focusable="True"
+                Focusable="False"
                 Background="Transparent"
                 >
-
         </Canvas>
-        <Button Cursor="Hand"  Grid.Row="2" Content="Draw" Click="DrawPolygon" Height="34" Margin="325,0,324,0"/>
+        <Button Cursor="Hand" Focusable="False" Grid.Row="2" Content="Draw" Click="DrawPolygon" Height="34" Margin="325,0,324,0"/>
     </Grid>
-
 </Window>
