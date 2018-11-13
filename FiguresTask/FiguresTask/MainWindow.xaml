@@ -53,8 +53,8 @@
                 Focusable="True"
                 Background="Transparent"
                 >
-            <Button Content="Select Color..." Click="DrawPolygon" Canvas.Left="10" Canvas.Top="5" Width="75"/>
+            <Button Content="Draw" Click="DrawPolygon" Canvas.Left="685" Canvas.Top="11" Width="92" Height="34"/>
         </Canvas>
     </Grid>
-   
+
 </Window>
