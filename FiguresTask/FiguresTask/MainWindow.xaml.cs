@@ -284,6 +284,7 @@ namespace Figures
                 {
                     string fullPath = System.IO.Path.GetFullPath(dialog.FileName);
                     var polygons = this.service.DeserializeAll(fullPath);
+                    this.polygons.Clear();
                     CleanCanvas();
                     foreach (var polygon in polygons)
                     {
@@ -360,13 +361,20 @@ namespace Figures
 
                     if (fromMenu != null)
                     {
-                        MainCanvas.Children.Add(new Polygon
+                        if (selectedPolygon != null)
                         {
-                            Points = fromMenu.Points.Clone(),
-                            Fill = fromMenu.Fill,
-                            Stroke = fromMenu.Stroke,
-                            StrokeThickness = fromMenu.StrokeThickness
-                        });
+                            foreach (var o in polygons)
+                            {
+                                if (selectedPolygon.Points == o.Points && o.Fill == selectedPolygon.Fill)
+                                {
+                                    o.StrokeThickness = 1;
+                                }
+                            }
+
+                        }
+
+                        selectedPolygon = fromMenu;
+                        selectedPolygon.StrokeThickness = 6;
                     }
                 }
 
