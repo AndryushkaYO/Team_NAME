@@ -331,6 +331,8 @@ namespace Figures
         /// <param name="e"></param>
         public void DrawPolygon(object sender, RoutedEventArgs e)
         {
+            if(lines.Count>1)
+            {
                 lines.Add(DrawLine(points.First()));
                 CreateNewPolygon();
                 points.Clear();
@@ -340,6 +342,7 @@ namespace Figures
                 }
                 lines.Clear();
                 return;
+            }
         }
 
         /// <summary>

@@ -53,8 +53,9 @@
                 Focusable="True"
                 Background="Transparent"
                 >
-            <Button Content="Draw" Click="DrawPolygon" Canvas.Left="685" Canvas.Top="11" Width="92" Height="34"/>
+
         </Canvas>
+        <Button Grid.Row="2" Content="Draw" Click="DrawPolygon" Height="34" Margin="325,0,324,0"/>
     </Grid>
 
 </Window>
