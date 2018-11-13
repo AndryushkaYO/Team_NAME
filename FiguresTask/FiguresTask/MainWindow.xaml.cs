@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Figures.Services;
+using FiguresTask;
 using Microsoft.Win32;
 
 namespace Figures
@@ -24,7 +25,7 @@ namespace Figures
     /// </summary>
     public partial class MainWindow : Window
     {
-        PolygonsService service = new PolygonsService();
+        public static PolygonsService service = new PolygonsService();
         private PointCollection points = new PointCollection();
         private ObservableCollection<Polygon> polygons = new ObservableCollection<Polygon>();
         private List<Line> lines = new List<Line>();
@@ -52,12 +53,18 @@ namespace Figures
                 this.Title = "Untitled.xml";
                 polygonesList.ItemsSource = polygons;
                 MainCanvas.KeyUp += KeyboardDragging;
+                Closing += new System.ComponentModel.CancelEventHandler((object sender, System.ComponentModel.CancelEventArgs e) =>
+                {
+                    Save();
+                });
             }
             catch (Exception ex)
             {
                 throw new ArgumentException(ex.ToString());
             }
         }
+
+       
         /// <summary>
         /// Cleans canvas
         /// </summary>
@@ -77,6 +84,8 @@ namespace Figures
                 throw new ArgumentException(ex.ToString());
             }
         }
+
+
         /// <summary>
         /// Drags polygon using keyboard buttons
         /// </summary>
@@ -257,6 +266,7 @@ namespace Figures
         {
             try
             {
+                Title = "Untitled.xml";
                 CleanCanvas();
                 service.repo.RemoveAll();
             }
@@ -279,11 +289,15 @@ namespace Figures
                 dialog.ShowDialog();
                 if (dialog.FileName != string.Empty)
                 {
+                    NewCanvas(sender, e);
+                    string[] args = dialog.FileName.Split('\\');
+                    string title = args[args.Length - 1];
+                    Title = title;
                     string fullPath = System.IO.Path.GetFullPath(dialog.FileName);
-                    var polygons = this.service.DeserializeAll(fullPath);
+                    var pol = service.DeserializeAll(fullPath);
                     this.polygons.Clear();
-                    CleanCanvas();
-                    foreach (var polygon in polygons)
+                  
+                    foreach (var polygon in pol)
                     {
                         this.polygons.Add(polygon);
                         MainCanvas.Children.Add(polygon);
@@ -301,6 +315,16 @@ namespace Figures
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void SaveCanvas(object sender, ExecutedRoutedEventArgs e)
+        {
+            Save();
+        }
+
+        /// <summary>
+        /// Saves actual canvars
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Save()
         {
             try
             {
