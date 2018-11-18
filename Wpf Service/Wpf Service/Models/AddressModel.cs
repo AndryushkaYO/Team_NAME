@@ -11,7 +11,7 @@ using System.Xml.Serialization;
 namespace Wpf_Service.Models
 {
     [Serializable]
-    class AddressModel
+    public class AddressModel
     {
 
         [XmlAttribute]
