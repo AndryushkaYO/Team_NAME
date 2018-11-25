@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Figures"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="Choose colour..." Height="140.698" Width="300" ResizeMode="NoResize">
+        Title="Choose Colour" Height="140.698" Width="300" ResizeMode="NoResize">
     <Grid>
         
         <Grid.RowDefinitions>

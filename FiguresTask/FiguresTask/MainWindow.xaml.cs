@@ -27,16 +27,18 @@ namespace Figures
     {
         public static PolygonsService service = new PolygonsService();
         private PointCollection points = new PointCollection();
-        private ObservableCollection<Polygon> polygons = new ObservableCollection<Polygon>();
+        public static ObservableCollection<Polygon> polygons = new ObservableCollection<Polygon>();
         private List<Line> lines = new List<Line>();
         private const double MinDistBetweenPoints = 10f;
         private bool dragging = false;
         private Point selectPoint;
         Point prevPoint;
+        public static string path;
+
 
         public Color polygonColor;
         public Polygon selectedPolygon;
-
+        public ShapesCommand shapesCommand = new ShapesCommand();
         /// <summary>
         /// Initialize component of main window
         /// </summary>
@@ -44,12 +46,15 @@ namespace Figures
         {
 
             try
-            {
+            {                
                 this.DataContext = this;
                 InitializeComponent();
                 MainCanvas.Focus();
                 MainCanvas.MouseUp += OnMouseUp;
                 MainCanvas.MouseMove += PolygonDrag;
+                MainCanvas.MouseLeftButtonDown += MyMouseDownHandler;
+                SaveButton.Command = new SaveCommand();
+                polygonesList.Command = new ShapesCommand();
                 this.Title = "Untitled.xml";
                 polygonesList.ItemsSource = polygons;
                 MainCanvas.KeyUp += KeyboardDragging;
@@ -64,7 +69,19 @@ namespace Figures
             }
         }
 
-       
+
+        private void MyMouseDownHandler(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ClickCount == 1)
+            {
+                AddPoint(sender,e);
+            }
+            if (e.ClickCount == 2)
+            {
+                DrawPolygon(sender,e);
+            }
+        }
+
         /// <summary>
         /// Cleans canvas
         /// </summary>
@@ -251,6 +268,8 @@ namespace Figures
                 newPolygon.Stroke = new SolidColorBrush(Colors.Black);
                 polygons.Add(newPolygon);
                 service.repo.Add(newPolygon);
+               polygonesList.Command = new ShapesCommand();
+
             }
             catch (Exception ex)
             {
@@ -269,6 +288,7 @@ namespace Figures
                 Title = "Untitled.xml";
                 CleanCanvas();
                 service.repo.RemoveAll();
+                polygonesList.Command = new ShapesCommand();
             }
             catch (Exception ex)
             {
@@ -295,12 +315,14 @@ namespace Figures
                     Title = title;
                     string fullPath = System.IO.Path.GetFullPath(dialog.FileName);
                     var pol = service.DeserializeAll(fullPath);
-                    this.polygons.Clear();
-                  
+                    polygons.Clear();
+
                     foreach (var polygon in pol)
                     {
-                        this.polygons.Add(polygon);
+                        polygons.Add(polygon);
+
                         MainCanvas.Children.Add(polygon);
+                        polygonesList.Command = new ShapesCommand();
                     }
                 }
             }
@@ -308,6 +330,7 @@ namespace Figures
             {
                 throw new ArgumentException(ex.ToString());
             }
+            polygonesList.Command = new ShapesCommand();
         }
         /// <summary>
         /// Saves actual canvars
@@ -336,8 +359,11 @@ namespace Figures
                     string[] args = saveFileWindow.FileName.Split('\\');
                     string title = args[args.Length - 1];
                     Title = title;
-                    string path = System.IO.Path.GetFullPath(saveFileWindow.FileName);
-                    service.SerealizeAll(path);
+                    string path2 = System.IO.Path.GetFullPath(saveFileWindow.FileName);
+                    service.SerealizeAll(path2);
+                    path = path2;
+                    SaveButton.Command = new SaveCommand{canExecute = true};
+                 
                 }
             }
             catch (Exception ex)

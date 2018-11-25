@@ -41,21 +41,21 @@
                     <MenuItem Header="_Open..."  Command="Open"/>
                     <MenuItem Header="_Save As..."  Command="Save"/>
                 </MenuItem>
-                <MenuItem Header="_Shapes" x:Name="polygonesList" Focusable="False" Grid.Row="1" 
-                          ItemTemplate="{StaticResource listTemplate}" Click="SelectPolygon" />
-                <MenuItem Header="_Save" Focusable="False" Command="Save">
+                <MenuItem Header="S_hapes" x:Name="polygonesList" Focusable="False" Grid.Row="1" 
+                          ItemTemplate="{StaticResource listTemplate}" Click="SelectPolygon" 
+                          Command=""/>
+                <MenuItem Header="_Save" Focusable="False" x:Name="SaveButton">
                 </MenuItem>
             </Menu>
         </DockPanel>
         <Canvas Grid.Row="1"
-                MouseLeftButtonDown="AddPoint"
+               
                 MouseRightButtonDown="SelectPolygon"
                 PreviewKeyDown="KeyboardDragging"
                 Name="MainCanvas"
                 Focusable="False"
-                Background="Transparent"
+                Background="Transparent" Margin="0,0.4,-1830.4,-769" Grid.RowSpan="2"
                 >
         </Canvas>
-        <Button Cursor="Hand" Focusable="False" Grid.Row="2" Content="Draw" Click="DrawPolygon" Height="34" Margin="325,0,324,0"/>
     </Grid>
 </Window>

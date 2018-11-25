@@ -73,6 +73,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="PolygonsService.cs" />
+    <Compile Include="SaveCommand.cs" />
+    <Compile Include="ShapesCommand.cs" />
     <Compile Include="ShapesRepository.cs" />
     <Page Include="ColorPickWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
