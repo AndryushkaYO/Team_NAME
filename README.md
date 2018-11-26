@@ -46,3 +46,6 @@
 
 ### BOARD :
 - <a href="https://github.com/bogdanpetrovsky/Team_NAME/projects/1" target="_blank">Platform of corporate IS</a>.
+
+
+
