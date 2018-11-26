@@ -20,4 +20,5 @@ namespace Wpf_Service.Bussiness_Logic
         {
             MessageBox.Show(message, caption, MessageBoxButton.OK, MessageBoxImage.Information);
         }
+    }
 }

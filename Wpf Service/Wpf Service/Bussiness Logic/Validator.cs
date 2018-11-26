@@ -11,11 +11,15 @@ namespace Wpf_Service.Bussiness_Logic
 {
 	public class Validator
     {
+
         private readonly List<TextBox> _inputs;
+
 
         private readonly TextBox _emailInput;
 
+
         private readonly TextBox _phoneNumberInput;
+
 
         public Validator(List<TextBox> inputs, TextBox emailInput, TextBox phoneNumberInput)
         {
@@ -24,7 +28,6 @@ namespace Wpf_Service.Bussiness_Logic
             _phoneNumberInput = phoneNumberInput;
         }
 
-       
         public void Validate()
         {
             foreach (var input in _inputs)
@@ -41,7 +44,6 @@ namespace Wpf_Service.Bussiness_Logic
             var text = _emailInput.Text.Trim();
         }
 
-        
         private void ValidatePhoneNumber()
         {
             var text = _phoneNumberInput.Text.Trim();
