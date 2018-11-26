@@ -34,7 +34,7 @@ namespace Figures
         private Point selectPoint;
         Point prevPoint;
         public static string path;
-
+        bool close = true;
 
         public Color polygonColor;
         public Polygon selectedPolygon;
@@ -61,6 +61,10 @@ namespace Figures
                 Closing += new System.ComponentModel.CancelEventHandler((object sender, System.ComponentModel.CancelEventArgs e) =>
                 {
                     Save();
+                    if (!close)
+                    {
+                        e.Cancel = true;
+                    }
                 });
             }
             catch (Exception ex)
@@ -353,7 +357,8 @@ namespace Figures
             {
                 SaveFileDialog saveFileWindow = new SaveFileDialog();
                 saveFileWindow.Filter = "Text file (*.xml)|*.xml";
-                saveFileWindow.ShowDialog();
+                Nullable<bool> result = saveFileWindow.ShowDialog();
+              
                 if (saveFileWindow.FileName != string.Empty)
                 {
                     string[] args = saveFileWindow.FileName.Split('\\');
@@ -365,6 +370,13 @@ namespace Figures
                     SaveButton.Command = new SaveCommand{canExecute = true};
                  
                 }
+
+                
+                if (result == false)
+                {
+                    close = false;
+                }
+                else close = true;
             }
             catch (Exception ex)
             {
