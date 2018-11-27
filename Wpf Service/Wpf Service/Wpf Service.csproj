@@ -74,6 +74,8 @@
     <Compile Include="Models\ClientModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\StoreModel.cs" />
+    <Compile Include="Order\Order.cs" />
+    <Compile Include="Order\OrdersStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
