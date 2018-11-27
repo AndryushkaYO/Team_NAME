@@ -24,3 +24,6 @@ C:\Users\Hp\Desktop\Новая папка\Новая папка\Team_NAME\Wpf Se
 C:\Users\Hp\Desktop\Новая папка\Новая папка\Team_NAME\Wpf Service\Wpf Service\obj\Debug\Wpf Service.csproj.CoreCompileInputs.cache
 C:\Users\Hp\Desktop\Новая папка\Новая папка\Team_NAME\Wpf Service\Wpf Service\obj\Debug\Wpf Service.exe
 C:\Users\Hp\Desktop\Новая папка\Новая папка\Team_NAME\Wpf Service\Wpf Service\obj\Debug\Wpf Service.pdb
+C:\Users\Hp\Desktop\Новая папка\Новая папка\Team_NAME\Wpf Service\Wpf Service\bin\Debug\Wpf Service.exe.config
+C:\Users\Hp\Desktop\Новая папка\Новая папка\Team_NAME\Wpf Service\Wpf Service\bin\Debug\Wpf Service.exe
+C:\Users\Hp\Desktop\Новая папка\Новая папка\Team_NAME\Wpf Service\Wpf Service\bin\Debug\Wpf Service.pdb
