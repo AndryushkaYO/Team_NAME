@@ -13,3 +13,14 @@ C:\Users\user\Desktop\1 семестр\Platforms\TASK 3\Team_NAME\Wpf Service\Wp
 C:\Users\user\Desktop\1 семестр\Platforms\TASK 3\Team_NAME\Wpf Service\Wpf Service\obj\Debug\Wpf Service.csproj.CoreCompileInputs.cache
 C:\Users\user\Desktop\1 семестр\Platforms\TASK 3\Team_NAME\Wpf Service\Wpf Service\obj\Debug\Wpf Service.exe
 C:\Users\user\Desktop\1 семестр\Platforms\TASK 3\Team_NAME\Wpf Service\Wpf Service\obj\Debug\Wpf Service.pdb
+C:\Users\Hp\Desktop\Новая папка\Новая папка\Team_NAME\Wpf Service\Wpf Service\obj\Debug\Wpf Service.csprojAssemblyReference.cache
+C:\Users\Hp\Desktop\Новая папка\Новая папка\Team_NAME\Wpf Service\Wpf Service\obj\Debug\MainWindow.baml
+C:\Users\Hp\Desktop\Новая папка\Новая папка\Team_NAME\Wpf Service\Wpf Service\obj\Debug\MainWindow.g.cs
+C:\Users\Hp\Desktop\Новая папка\Новая папка\Team_NAME\Wpf Service\Wpf Service\obj\Debug\App.g.cs
+C:\Users\Hp\Desktop\Новая папка\Новая папка\Team_NAME\Wpf Service\Wpf Service\obj\Debug\Wpf Service_MarkupCompile.cache
+C:\Users\Hp\Desktop\Новая папка\Новая папка\Team_NAME\Wpf Service\Wpf Service\obj\Debug\Wpf Service.g.resources
+C:\Users\Hp\Desktop\Новая папка\Новая папка\Team_NAME\Wpf Service\Wpf Service\obj\Debug\Wpf_Service.Properties.Resources.resources
+C:\Users\Hp\Desktop\Новая папка\Новая папка\Team_NAME\Wpf Service\Wpf Service\obj\Debug\Wpf Service.csproj.GenerateResource.cache
+C:\Users\Hp\Desktop\Новая папка\Новая папка\Team_NAME\Wpf Service\Wpf Service\obj\Debug\Wpf Service.csproj.CoreCompileInputs.cache
+C:\Users\Hp\Desktop\Новая папка\Новая папка\Team_NAME\Wpf Service\Wpf Service\obj\Debug\Wpf Service.exe
+C:\Users\Hp\Desktop\Новая папка\Новая папка\Team_NAME\Wpf Service\Wpf Service\obj\Debug\Wpf Service.pdb
