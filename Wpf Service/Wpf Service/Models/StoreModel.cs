@@ -9,46 +9,44 @@ using System.Xml.Serialization;
 
 namespace Wpf_Service.Models
 {
-    class StoreModel
+
+    [Serializable]
+    public class StoreModel
     {
-        [Serializable]
-        public class ShopData
+
+        public string Name { get; set; }
+
+        public AddressModel AddressModel { get; set; }
+
+
+        public StoreModel()
+        {
+            AddressModel = new AddressModel();
+        }
+
+
+        public StoreModel(string name, AddressModel shopAddressModel)
+        {
+            Name = name.Trim();
+            AddressModel = shopAddressModel;
+        }
+
+        public StoreModel(XmlNode source)
         {
 
-            public string Name { get; set; }
+            var attributes = source.Attributes;
 
-            public AddressModel AddressModel { get; set; }
+            Name = attributes["Name"].Value;
+            var AddressModelElement = source.SelectSingleNode("AddressModel");
+            AddressModel = new AddressModel(AddressModelElement.Attributes);
+        }
 
-
-            public ShopData()
-            {
-                AddressModel = new AddressModel();
-            }
-
-
-            public ShopData(string name, AddressModel shopAddressModel)
-            {
-                Name = name.Trim();
-                AddressModel = shopAddressModel;
-            }
-
-            public ShopData(XmlNode source)
-            {
-
-                var attributes = source.Attributes;
-
-                Name = attributes["Name"].Value;
-                var AddressModelElement = source.SelectSingleNode("AddressModel");
-                AddressModel = new AddressModel(AddressModelElement.Attributes);
-            }
-
-            public XElement ToXml()
-            {
-                return new XElement(
-                    "ShopData",
-                    new XAttribute("Name", Name),
-                    AddressModel.ToXml());
-            }
+        public XElement ToXml()
+        {
+            return new XElement(
+                "ShopData",
+                new XAttribute("Name", Name),
+                AddressModel.ToXml());
         }
     }
 }
