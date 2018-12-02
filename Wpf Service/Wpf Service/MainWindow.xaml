@@ -209,7 +209,7 @@
 						FontSize="14"
 						MaxLines="1"
 						FontWeight="Normal"
-						Text="{Binding Path=ClientModel.FirstName}"
+						Text="{Binding Path=ClientData.FirstName}"
 						GotMouseCapture="InputFocused"
 						GotKeyboardFocus="InputFocused"
 						Width="354"/>
@@ -237,7 +237,7 @@
 						FontSize="14"
 						MaxLines="1"
 						FontWeight="Normal"
-						Text="{Binding Path=ClientModel.LastName}"
+						Text="{Binding Path=ClientData.LastName}"
 						GotMouseCapture="InputFocused"
 						GotKeyboardFocus="InputFocused"
 						Width="354"/>
@@ -265,7 +265,7 @@
 						FontSize="14"
 						MaxLines="1"
 						FontWeight="Normal"
-						Text="{Binding Path=ClientModel.Email}"
+						Text="{Binding Path=ClientData.Email}"
 						GotMouseCapture="InputFocused"
 						GotKeyboardFocus="InputFocused"
 						Width="354"/>
@@ -293,7 +293,7 @@
 						FontSize="14"
 						MaxLines="1"
 						FontWeight="Normal"
-						Text="{Binding Path=ClientModel.PhoneNumber}"
+						Text="{Binding Path=ClientData.PhoneNumber}"
 						GotMouseCapture="InputFocused"
 						GotKeyboardFocus="InputFocused"
 						Width="354"/>
@@ -330,7 +330,7 @@
 								FontSize="14"
 								MaxLines="1"
 								FontWeight="Normal"
-								Text="{Binding Path=ClientModel.Address.City}"
+								Text="{Binding Path=ClientData.AddressModel.City}"
 								GotMouseCapture="InputFocused"
 								GotKeyboardFocus="InputFocused"
 								Width="187"/>
@@ -358,7 +358,7 @@
 								FontSize="14"
 								MaxLines="1"
 								FontWeight="Normal"
-								Text="{Binding Path=ClientModel.Address.Street}"
+								Text="{Binding Path=ClientData.AddressModel.Street}"
 								GotMouseCapture="InputFocused"
 								GotKeyboardFocus="InputFocused"
 								Width="187"/>
@@ -386,7 +386,7 @@
 								FontSize="14"
 								MaxLines="1"
 								FontWeight="Normal"
-								Text="{Binding Path=ClientModel.Address.BuildingNumber}"
+								Text="{Binding Path=ClientData.AddressModel.BuildingNumber}"
 								GotMouseCapture="InputFocused"
 								GotKeyboardFocus="InputFocused"
 								Width="187"/>
@@ -427,7 +427,7 @@
 						FontSize="14"
 						MaxLines="1"
 						FontWeight="Normal"
-						Text="{Binding Path=StoreModel.Name}"
+						Text="{Binding Path=ShopData.Name}"
 						GotMouseCapture="InputFocused"
 						GotKeyboardFocus="InputFocused"
 						Width="354"/>
@@ -464,7 +464,7 @@
 								FontSize="14"
 								MaxLines="1"
 								FontWeight="Normal"
-								Text="{Binding Path=StoreModel.Address.City}"
+								Text="{Binding Path=ShopData.AddressModel.City}"
 								GotMouseCapture="InputFocused"
 								GotKeyboardFocus="InputFocused"
 								Width="187"/>
@@ -492,7 +492,7 @@
 								FontSize="14"
 								MaxLines="1"
 								FontWeight="Normal"
-								Text="{Binding Path=StoreModel.Address.Street}"
+								Text="{Binding Path=ShopData.AddressModel.Street}"
 								GotMouseCapture="InputFocused"
 								GotKeyboardFocus="InputFocused"
 								Width="187"/>
@@ -520,7 +520,7 @@
 								FontSize="14"
 								MaxLines="1"
 								FontWeight="Normal"
-								Text="{Binding Path=StoreModel.Address.BuildingNumber}"
+								Text="{Binding Path=ShopData.AddressModel.BuildingNumber}"
 								GotMouseCapture="InputFocused"
 								GotKeyboardFocus="InputFocused"
 								Width="187"/>
@@ -561,7 +561,7 @@
 						FontSize="14"
 						MaxLines="1"
 						FontWeight="Normal"
-						Text="{Binding Path=ProductModel.Code}"
+						Text="{Binding Path=GoodsData.Code}"
 						GotMouseCapture="InputFocused"
 						GotKeyboardFocus="InputFocused"
 						Width="290"/>
@@ -589,7 +589,7 @@
 						FontSize="14"
 						MaxLines="1"
 						FontWeight="Normal"
-						Text="{Binding Path=ProductModel.Weight}"
+						Text="{Binding Path=GoodsData.Weight}"
 						GotMouseCapture="InputFocused"
 						GotKeyboardFocus="InputFocused"
 						Width="290"/>

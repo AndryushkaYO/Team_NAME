@@ -73,7 +73,7 @@ namespace Wpf_Service.Models
         public XElement ToXml()
         {
             return new XElement(
-                "ClientModel",
+                "ClientData",
                 new XAttribute("FirstName", FirstName),
                 new XAttribute("LastName", LastName),
                 new XAttribute("Email", Email),
