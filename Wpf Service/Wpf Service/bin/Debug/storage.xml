@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfOrder xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Order Id="0">
+    <ClientData FirstName="Andri" LastName="Yovbak" Email="dgdgdd@gmail.com" PhoneNumber="066-23-23-123">
+      <AddressModel City="Lviv" Street="fdb" BuildingNumber="5" />
+    </ClientData>
+    <GoodsData Code="234" Weight="1" />
+    <ShopData Name="CoShop">
+      <AddressModel City="Mukachevo" Street="Voloshina" BuildingNumber="56" />
+    </ShopData>
+  </Order>
+  <Order Id="1">
+    <ClientData FirstName="asdasd" LastName="sdfsdf" Email="dsf@gmail.com" PhoneNumber="123-34-21-334">
+      <AddressModel City="df" Street="213" BuildingNumber="24" />
+    </ClientData>
+    <GoodsData Code="32423" Weight="1" />
+    <ShopData Name="dfsdf">
+      <AddressModel City="dafd" Street="123" BuildingNumber="4" />
+    </ShopData>
+  </Order>
+</ArrayOfOrder>

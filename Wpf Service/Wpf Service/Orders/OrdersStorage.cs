@@ -5,7 +5,7 @@ using System.Xml.Linq;
 using System.Xml.Serialization;
 using System.Collections.Generic;
 
-namespace Wpf_Service.Order
+namespace Wpf_Service.Orders
 {
     /// <summary>
     /// Represents an order storage object.

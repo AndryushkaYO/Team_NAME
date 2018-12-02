@@ -53,7 +53,7 @@ namespace Wpf_Service.Models
         public XElement ToXml()
         {
             return new XElement(
-                "ProductModel",
+                "GoodsData",
                 new XAttribute("Code", Code),
                 new XAttribute("Weight", Weight));
         }

@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 using Wpf_Service.Models;
 
-namespace Wpf_Service.Order
+namespace Wpf_Service.Orders
 {
     /// <summary>
 	/// Represents an order.
@@ -98,12 +98,13 @@ namespace Wpf_Service.Order
         /// <returns>Order representation as xml element.</returns>
         public XElement ToXml()
         {
-            return new XElement(
+            XElement q  = new XElement(
                 "Order",
                 new XAttribute("Id", Id),
                 ClientData.ToXml(),
                 GoodsData.ToXml(),
                 ShopData.ToXml());
+            return q;
         }
 
         /// <summary>
