@@ -3,11 +3,16 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Media.Effects;
 
 using Wpf_Service.Bussiness_Logic;
 using Wpf_Service.Models;
 using Wpf_Service.Orders;
+using System.Windows.Media;
+using System.Windows.Input;
 
 namespace Wpf_Service
 {
@@ -35,6 +40,28 @@ namespace Wpf_Service
         /// An object for storage connection.
         /// </summary>
         private readonly OrdersStorage _storage;
+
+
+        private static MainWindow _instance;
+
+        public ICommand _saveCommand;
+
+        public ICommand SaveCommand
+        {
+            get
+            {
+                if (_saveCommand == null)
+                {
+                    _saveCommand = new SaveCommand();
+                }
+                return _saveCommand;
+            }
+        }
+
+        public static MainWindow Instance
+        {
+            get { return _instance; }
+        }
 
         /// <summary>
         /// Parameterless constructor of application's main window.
@@ -77,6 +104,24 @@ namespace Wpf_Service
                 Email,
                 PhoneNumber);
             ResetOrderInstance();
+            Closing += OnWindowClose;
+            _instance = this;
+            SetTextBoxAction();
+            setUpdater();
+        }
+
+        private void setUpdater()
+        {
+            UpdateButton();
+        }
+        private async void UpdateButton()
+        {
+            SaveButton.IsEnabled = HasChanges();
+            while (true)
+            {
+                await Task.Delay(50);
+                SaveButton.IsEnabled = HasChanges();
+            }
         }
 
         /// <summary>
@@ -156,6 +201,11 @@ namespace Wpf_Service
         /// <param name="e">Arguments that the implementor of this event may find useful.</param>
         private void SaveOrder(object sender, RoutedEventArgs e)
         {
+            Save();
+        }
+
+        public void Save()
+        {
             try
             {
                 _validator.Validate();
@@ -209,6 +259,7 @@ namespace Wpf_Service
         /// <param name="e">Arguments that the implementor of this event may find useful.</param>
         private void NewOrder(object sender, RoutedEventArgs e)
         {
+            if (HasChanges()) SaveWindow();
             ResetOrderInstance();
         }
 
@@ -258,5 +309,86 @@ namespace Wpf_Service
             _order = new Order { Id = -1 };
             DataContext = _order;
         }
+
+        public void OnWindowClose(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+            if (HasChanges()) SaveWindow();
+        }
+
+        public void SetTextBoxAction()
+        {
+            var textBoxes = FindVisualChildren<TextBox>(this);
+            foreach (var textBox in textBoxes)
+            {
+                textBox.TextChanged += new TextChangedEventHandler((sender, args) => UpdateButton());
+            }
+        }
+
+        public bool HasChanges()
+        {
+            var textBoxes = FindVisualChildren<TextBox>(this);
+            bool hasChanges = false;
+            foreach (var textBox in textBoxes)
+            {
+
+                if (textBox.Text != string.Empty && textBox.Text != "0")
+                {
+                    hasChanges = true;
+                    break;
+                }
+            }
+
+            return hasChanges;
+        }
+
+        private void SaveWindow()
+        {
+            string sMessageBoxText = "Do you want to Save?";
+            string sCaption = "";
+
+            MessageBoxButton btnMessageBox = MessageBoxButton.YesNo;
+            MessageBoxImage icnMessageBox = MessageBoxImage.Warning;
+
+            MessageBoxResult rsltMessageBox = MessageBox.Show(sMessageBoxText, sCaption, btnMessageBox, icnMessageBox);
+
+            switch (rsltMessageBox)
+            {
+                case MessageBoxResult.Yes:
+                    Save();
+                    break;
+
+                case MessageBoxResult.No:
+                    break;
+            }
+        }
+
+        public void SaveCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = HasChanges();
+        }
+
+        public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+        {
+            if (depObj != null)
+            {
+                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+                {
+                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
+                    if (child != null && child is T)
+                    {
+                        yield return (T)child;
+                    }
+
+                    foreach (T childOfChild in FindVisualChildren<T>(child))
+                    {
+                        yield return childOfChild;
+                    }
+                }
+            }
+        }
     }
 }
+
+
+

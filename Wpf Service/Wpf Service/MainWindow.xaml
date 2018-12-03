@@ -149,7 +149,9 @@
 				Background="Azure"
 				Height="40"
 				Width="120"
-				Click="SaveOrder">
+				Click="SaveOrder"              
+                x:Name="SaveButton"               
+                >
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="5"/>
@@ -184,7 +186,8 @@
 			Header="Personal Info" 
 			Height="250"
 			Margin="10,10,10,0"
-			Width="774">
+			Width="774"
+            x:Name="TextBoxes">
             <Grid>
                 <GroupBox
 					DockPanel.Dock="Top"
