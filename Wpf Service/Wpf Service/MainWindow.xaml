@@ -6,10 +6,12 @@
 	mc:Ignorable="d"
 	x:Name="WindowMain"
 	Title="Delivery Service"
+        ResizeMode="NoResize"
 	Height="660"
 	Width="830"
 	MinHeight="660"
 	MinWidth="830"
+    Background="Silver"
 	d:DataContext="{d:_order}">
     <DockPanel
 		Margin="10"
@@ -180,16 +182,21 @@
             </Button>
         </Grid>
         <GroupBox
+            Background="LightSteelBlue"
+            BorderBrush="SlateGray"
+            BorderThickness="2"
 			DockPanel.Dock="Top"
 			FontSize="18"
 			FontWeight="Bold"
-			Header="Personal Info" 
+			Header="Personal info" 
 			Height="250"
 			Margin="10,10,10,0"
 			Width="774"
             x:Name="TextBoxes">
             <Grid>
                 <GroupBox
+                    
+                    BorderBrush="Gray"                    
 					DockPanel.Dock="Top"
 					Header="First name" 
 					Height="50"
@@ -199,6 +206,7 @@
 					Margin="10,10,0,0"
 					Width="366">
                     <TextBox
+                        Background="Lavender"
 						x:Name="FirstName"
 						HorizontalAlignment="Left"
 						Height="30"
@@ -207,7 +215,7 @@
 						VerticalAlignment="Top"
 						Padding="3"
 						BorderBrush="Transparent"
-						Background="Transparent"
+						
 						BorderThickness="0"
 						FontSize="14"
 						MaxLines="1"
@@ -218,6 +226,7 @@
 						Width="354"/>
                 </GroupBox>
                 <GroupBox
+                    BorderBrush="Gray" 
 					DockPanel.Dock="Top"
 					Header="Last name" 
 					Height="50"
@@ -226,7 +235,8 @@
 					VerticalAlignment="Top"
 					Margin="0,10,10,0"
 					Width="366">
-                    <TextBox
+                    <TextBox 
+                        Background="Lavender"
 						x:Name="LastName"
 						HorizontalAlignment="Left"
 						Height="30"
@@ -235,7 +245,7 @@
 						VerticalAlignment="Top"
 						Padding="3"
 						BorderBrush="Transparent"
-						Background="Transparent"
+						
 						BorderThickness="0"
 						FontSize="14"
 						MaxLines="1"
@@ -246,6 +256,7 @@
 						Width="354"/>
                 </GroupBox>
                 <GroupBox
+                    BorderBrush="Gray" 
 					DockPanel.Dock="Top"
 					Header="Email" 
 					Height="50"
@@ -255,6 +266,7 @@
 					Margin="10,70,0,0"
 					Width="366">
                     <TextBox
+                        Background="Lavender"
 						x:Name="Email"
 						HorizontalAlignment="Left"
 						Height="30"
@@ -263,7 +275,7 @@
 						VerticalAlignment="Top"
 						Padding="3"
 						BorderBrush="Transparent"
-						Background="Transparent"
+						
 						BorderThickness="0"
 						FontSize="14"
 						MaxLines="1"
@@ -274,8 +286,9 @@
 						Width="354"/>
                 </GroupBox>
                 <GroupBox
+                    BorderBrush="Gray" 
 					DockPanel.Dock="Top"
-					Header="Phone Number"
+					Header="Phone number"
 					Height="50"
 					FontSize="13"
 					HorizontalAlignment="Right"
@@ -283,6 +296,7 @@
 					Margin="0,70,10,0"
 					Width="366">
                     <TextBox
+                        Background="Lavender"
 						x:Name="PhoneNumber"
 						HorizontalAlignment="Left"
 						Height="30"
@@ -291,7 +305,7 @@
 						VerticalAlignment="Top"
 						Padding="3"
 						BorderBrush="Transparent"
-						Background="Transparent"
+						
 						BorderThickness="0"
 						FontSize="14"
 						MaxLines="1"
@@ -302,6 +316,7 @@
 						Width="354"/>
                 </GroupBox>
                 <GroupBox
+                    BorderBrush="Gray"
 					Header="Address"
 					HorizontalAlignment="Left"
 					Height="80"
@@ -311,6 +326,7 @@
 					Width="660">
                     <Grid>
                         <GroupBox
+                            BorderBrush="Gray" 
 							DockPanel.Dock="Top"
 							Header="City" 
 							Height="50"
@@ -320,6 +336,7 @@
 							Margin="10,0,0,0"
 							Width="200">
                             <TextBox
+                                Background="Lavender"
 								x:Name="ClientAddressCity"
 								HorizontalAlignment="Left"
 								Height="30"
@@ -328,7 +345,7 @@
 								VerticalAlignment="Top"
 								Padding="3"
 								BorderBrush="Transparent"
-								Background="Transparent"
+								
 								BorderThickness="0"
 								FontSize="14"
 								MaxLines="1"
@@ -339,6 +356,7 @@
 								Width="187"/>
                         </GroupBox>
                         <GroupBox
+                            BorderBrush="Gray"
 							DockPanel.Dock="Top"
 							Header="Street" 
 							Height="50"
@@ -348,6 +366,7 @@
 							Margin="10,0,0,0"
 							Width="200">
                             <TextBox
+                                Background="Lavender"
 								x:Name="ClientAddressStreet"
 								HorizontalAlignment="Left"
 								Height="30"
@@ -356,7 +375,7 @@
 								VerticalAlignment="Top"
 								Padding="3"
 								BorderBrush="Transparent"
-								Background="Transparent"
+								
 								BorderThickness="0"
 								FontSize="14"
 								MaxLines="1"
@@ -367,8 +386,9 @@
 								Width="187"/>
                         </GroupBox>
                         <GroupBox
+                            BorderBrush="Gray"
 							DockPanel.Dock="Top"
-							Header="Building Number" 
+							Header="Building number" 
 							Height="50"
 							FontSize="13"
 							HorizontalAlignment="Right"
@@ -376,6 +396,7 @@
 							Margin="10,0,10,0"
 							Width="200">
                             <TextBox
+                                Background="Lavender"
 								x:Name="ClientAddressBuildingNumber"
 								HorizontalAlignment="Left"
 								Height="30"
@@ -384,7 +405,7 @@
 								VerticalAlignment="Top"
 								Padding="3"
 								BorderBrush="Transparent"
-								Background="Transparent"
+								
 								BorderThickness="0"
 								FontSize="14"
 								MaxLines="1"
@@ -399,8 +420,11 @@
             </Grid>
         </GroupBox>
         <GroupBox
+            Background="LightSteelBlue"
+            BorderBrush="SlateGray"
+            BorderThickness="2"
 			DockPanel.Dock="Top"
-			Header="Shop Info"
+			Header="Shop info"
 			Height="170"
 			FontWeight="Bold"
 			FontSize="18"
@@ -408,8 +432,9 @@
 			VerticalAlignment="Top">
             <Grid>
                 <GroupBox
+                    BorderBrush="Gray"
 					DockPanel.Dock="Top"
-					Header="Shop Name" 
+					Header="Shop name" 
 					Height="50"
 					FontSize="13"
 					HorizontalAlignment="Center"
@@ -417,6 +442,7 @@
 					Margin="0,0,0,0"
 					Width="366">
                     <TextBox
+                        Background="Lavender"
 						x:Name="ShopName"
 						HorizontalAlignment="Left"
 						Height="30"
@@ -425,7 +451,7 @@
 						VerticalAlignment="Top"
 						Padding="3"
 						BorderBrush="Transparent"
-						Background="Transparent"
+						
 						BorderThickness="0"
 						FontSize="14"
 						MaxLines="1"
@@ -436,6 +462,7 @@
 						Width="354"/>
                 </GroupBox>
                 <GroupBox
+                    BorderBrush="Gray"
 					Header="Address"
 					HorizontalAlignment="Center"
 					Height="80"
@@ -445,6 +472,7 @@
 					Width="660">
                     <Grid>
                         <GroupBox
+                            BorderBrush="Gray"
 							DockPanel.Dock="Top"
 							Header="City"
 							Height="50"
@@ -454,6 +482,7 @@
 							Margin="10,0,0,0"
 							Width="200">
                             <TextBox
+                                Background="Lavender"
 								x:Name="ShopAddressCity"
 								HorizontalAlignment="Left"
 								Height="30"
@@ -461,8 +490,7 @@
 								TextWrapping="Wrap"
 								VerticalAlignment="Top"
 								Padding="3"
-								BorderBrush="Transparent"
-								Background="Transparent"
+								BorderBrush="Transparent"								
 								BorderThickness="0"
 								FontSize="14"
 								MaxLines="1"
@@ -473,6 +501,7 @@
 								Width="187"/>
                         </GroupBox>
                         <GroupBox
+                            BorderBrush="Gray"
 							DockPanel.Dock="Top"
 							Header="Street" 
 							Height="50"
@@ -482,6 +511,7 @@
 							Margin="10,0,0,0"
 							Width="200">
                             <TextBox
+                                Background="Lavender"
 								x:Name="ShopAddressStreet"
 								HorizontalAlignment="Left"
 								Height="30"
@@ -490,7 +520,7 @@
 								VerticalAlignment="Top"
 								Padding="3"
 								BorderBrush="Transparent"
-								Background="Transparent"
+								
 								BorderThickness="0"
 								FontSize="14"
 								MaxLines="1"
@@ -501,8 +531,9 @@
 								Width="187"/>
                         </GroupBox>
                         <GroupBox
+                            BorderBrush="Gray"
 							DockPanel.Dock="Top"
-							Header="Building Number" 
+							Header="Building number" 
 							Height="50"
 							FontSize="13"
 							HorizontalAlignment="Right"
@@ -510,6 +541,7 @@
 							Margin="10,0,10,0"
 							Width="200">
                             <TextBox
+                                Background="Lavender"
 								x:Name="ShopAddressBuildingNumber"
 								HorizontalAlignment="Left"
 								Height="30"
@@ -518,7 +550,7 @@
 								VerticalAlignment="Top"
 								Padding="3"
 								BorderBrush="Transparent"
-								Background="Transparent"
+								
 								BorderThickness="0"
 								FontSize="14"
 								MaxLines="1"
@@ -533,8 +565,11 @@
             </Grid>
         </GroupBox>
         <GroupBox
+             Background="LightSteelBlue"
+            BorderBrush="SlateGray"
+            BorderThickness="2"
 			DockPanel.Dock="Top"
-			Header="Goods Info"
+			Header="Goods info"
 			Height="85"
 			FontWeight="Bold"
 			FontSize="18"
@@ -542,6 +577,7 @@
 			VerticalAlignment="Top">
             <Grid>
                 <GroupBox
+                    BorderBrush="Gray"
 					DockPanel.Dock="Top"
 					Header="Code" 
 					Height="50"
@@ -551,6 +587,7 @@
 					Margin="70,0,0,0"
 					Width="300">
                     <TextBox
+                        Background="Lavender"
 						x:Name="GoodsCode"
 						HorizontalAlignment="Left"
 						Height="30"
@@ -559,7 +596,7 @@
 						VerticalAlignment="Top"
 						Padding="3"
 						BorderBrush="Transparent"
-						Background="Transparent"
+						
 						BorderThickness="0"
 						FontSize="14"
 						MaxLines="1"
@@ -570,6 +607,7 @@
 						Width="290"/>
                 </GroupBox>
                 <GroupBox
+                    BorderBrush="Gray"
 					DockPanel.Dock="Top"
 					Header="Weight (kg)"
 					Height="50"
@@ -579,6 +617,7 @@
 					Margin="10,0,70,0"
 					Width="300">
                     <TextBox
+                        Background="Lavender"
 						x:Name="GoodsWeight"
 						HorizontalAlignment="Left"
 						Height="30"
@@ -587,7 +626,7 @@
 						VerticalAlignment="Top"
 						Padding="3"
 						BorderBrush="Transparent"
-						Background="Transparent"
+						
 						BorderThickness="0"
 						FontSize="14"
 						MaxLines="1"
