@@ -58,5 +58,38 @@ namespace WPF_UnitTests
             XElement z = client.ToXml();
             Assert.AreNotEqual(x, z);
         }
+
+        [TestMethod]
+        public void StoreModelTest()
+        {
+            AddressModel address = new AddressModel("Lviv", "Medova", 65);
+            StoreModel store = new StoreModel("MeowShop", address);
+            Assert.AreEqual(store.Name, "MeowShop");
+            Assert.AreEqual(store.AddressModel.City, "Lviv");
+            Assert.AreEqual(store.AddressModel.Street, "Medova");
+            Assert.AreEqual(store.AddressModel.BuildingNumber, (UInt32)65);
+
+            XElement x = new XElement(
+                "ShopData",
+                new XAttribute("Name", "CoShop"),
+                address.ToXml());
+            XElement z = store.ToXml();
+            Assert.AreNotEqual(x, z);
+        }
+
+        [TestMethod]
+        public void ProductModelTest()
+        {
+            ProductModel product = new ProductModel(23443, 2);
+            Assert.AreEqual(product.Code, (uint)23443);
+            Assert.AreEqual(product.Weight, 2);
+
+            XElement x = new XElement(
+                 "GoodsData",
+                 new XAttribute("Code", 12232),
+                 new XAttribute("Weight", 1));
+            XElement z = product.ToXml();
+            Assert.AreNotEqual(x, z);
+        }
     }
 }
