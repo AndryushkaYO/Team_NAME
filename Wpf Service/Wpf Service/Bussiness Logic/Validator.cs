@@ -15,10 +15,10 @@ namespace Wpf_Service.Bussiness_Logic
         private readonly List<TextBox> _inputs;
 
 
-        private readonly TextBox _emailInput;
+        public readonly TextBox _emailInput;
 
 
-        private readonly TextBox _phoneNumberInput;
+        public readonly TextBox _phoneNumberInput;
 
 
         public Validator(List<TextBox> inputs, TextBox emailInput, TextBox phoneNumberInput)

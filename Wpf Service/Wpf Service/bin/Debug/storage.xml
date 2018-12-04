@@ -10,30 +10,21 @@
     </ShopData>
   </Order>
   <Order Id="1">
-    <ClientData FirstName="asdasd" LastName="sdfsdf" Email="dsf@gmail.com" PhoneNumber="123-34-21-334">
-      <AddressModel City="df" Street="213" BuildingNumber="24" />
+    <ClientData FirstName="Bogdan" LastName="Petrovsky" Email="bpetrovsky@mail.ua" PhoneNumber="095-45-23-223">
+      <AddressModel City="Krakiv" Street="Main" BuildingNumber="11" />
     </ClientData>
-    <GoodsData Code="32423" Weight="1" />
-    <ShopData Name="dfsdf">
-      <AddressModel City="dafd" Street="123" BuildingNumber="4" />
+    <GoodsData Code="26546" Weight="5" />
+    <ShopData Name="MeowShop">
+      <AddressModel City="Lviv" Street="Voloshina" BuildingNumber="4" />
     </ShopData>
   </Order>
   <Order Id="2">
-    <ClientData FirstName="kjshdk" LastName="kjhi" Email="dfsdv@jkkhj.fdg" PhoneNumber="066-45-45-455">
-      <AddressModel City="jkjbnbjv" Street="mbj" BuildingNumber="2" />
+    <ClientData FirstName="Andri" LastName="jh" Email="kjkhk@vuho.com" PhoneNumber="066-45-45-344">
+      <AddressModel City="jk" Street="jb" BuildingNumber="9" />
     </ClientData>
-    <GoodsData Code="12123" Weight="3" />
-    <ShopData Name="jbjhgjkjbkjg">
-      <AddressModel City="mbjgu" Street="kjhjugv" BuildingNumber="2" />
-    </ShopData>
-  </Order>
-  <Order Id="3">
-    <ClientData FirstName="uygugiu" LastName="jhbgj" Email="guig@fgvj.df" PhoneNumber="055-34-34-344">
-      <AddressModel City="kjhkljj" Street="ghig" BuildingNumber="2" />
-    </ClientData>
-    <GoodsData Code="23435" Weight="3" />
+    <GoodsData Code="6567" Weight="8" />
     <ShopData Name="jkg">
-      <AddressModel City="jhg" Street="kj" BuildingNumber="2" />
+      <AddressModel City="jhg" Street="j" BuildingNumber="9" />
     </ShopData>
   </Order>
 </ArrayOfOrder>

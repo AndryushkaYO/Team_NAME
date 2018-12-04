@@ -9,11 +9,16 @@ using Wpf_Service.Models;
 
 namespace Wpf_Service.Orders
 {
+    public interface IDataErrorInfo
+    {
+        string Error { get; }
+        string this[string columnName] { get; }
+    }
     /// <summary>
 	/// Represents an order.
 	/// </summary>
 	[Serializable]
-    public class Order
+    public class Order : IDataErrorInfo
     {
         /// <summary>
         /// Holds an id of the order.
@@ -194,6 +199,34 @@ namespace Wpf_Service.Orders
 
             goodsData.Attributes["Code"].Value = @new.GoodsData.Code.ToString();
             goodsData.Attributes["Weight"].Value = @new.GoodsData.Weight.ToString(CultureInfo.InvariantCulture);
+        }
+        public string this[string columnName]
+        {
+            get
+            {
+                string error = String.Empty;
+                switch (columnName)
+                {
+                    case "Email":
+                        if (true)
+                        {
+                            error = "Возраст должен быть больше 0 и меньше 100";
+                        }
+                        break;
+                    case "PhoneNumber":
+                        if (true)
+                        {
+                            error = "Возраст должен быть больше 0 и меньше 100";
+                        }
+                        break;
+
+                }
+                return error;
+            }
+        }
+        public string Error
+        {
+            get { throw new NotImplementedException(); }
         }
     }
 }

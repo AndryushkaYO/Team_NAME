@@ -9,9 +9,9 @@
         ResizeMode="NoResize"
 	Height="660"
 	Width="830"
-	MinHeight="660"
+	MinHeight="680"
 	MinWidth="830"
-    Background="Silver"
+    Background="PowderBlue"
 	d:DataContext="{d:_order}">
     <DockPanel
 		Margin="10"
@@ -120,7 +120,7 @@
             </Border>
         </Popup>
         <Grid
-			DockPanel.Dock="Top">
+			DockPanel.Dock="Top">            
             <Button
 				Content="New"
 				HorizontalAlignment="Center"
@@ -180,7 +180,9 @@
                     </Style>
                 </Button.Resources>
             </Button>
+           
         </Grid>
+        
         <GroupBox
             Background="LightSteelBlue"
             BorderBrush="SlateGray"
@@ -223,7 +225,9 @@
 						Text="{Binding Path=ClientData.FirstName}"
 						GotMouseCapture="InputFocused"
 						GotKeyboardFocus="InputFocused"
-						Width="354"/>
+						Width="354">
+                        
+                    </TextBox>
                 </GroupBox>
                 <GroupBox
                     BorderBrush="Gray" 
@@ -280,10 +284,26 @@
 						FontSize="14"
 						MaxLines="1"
 						FontWeight="Normal"
-						Text="{Binding Path=ClientData.Email}"
+						
 						GotMouseCapture="InputFocused"
 						GotKeyboardFocus="InputFocused"
-						Width="354"/>
+						Width="354">
+                        <TextBox.Text>
+                            <Binding Path="ClientData.Email">
+                                <Binding.ValidationRules>
+                                    <DataErrorValidationRule />
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                        <TextBox.ToolTip>
+                            <ToolTip DataContext="{Binding Path=PlacementTarget, RelativeSource={x:Static RelativeSource.Self}}">
+                                <StackPanel>
+                                    <Label FontWeight="Bold" Content="Hint"/>
+                                    <Label Content="Type your email like this *******@****.***"/>
+                                </StackPanel>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                    </TextBox>
                 </GroupBox>
                 <GroupBox
                     BorderBrush="Gray" 
@@ -310,10 +330,28 @@
 						FontSize="14"
 						MaxLines="1"
 						FontWeight="Normal"
-						Text="{Binding Path=ClientData.PhoneNumber}"
+						
 						GotMouseCapture="InputFocused"
 						GotKeyboardFocus="InputFocused"
-						Width="354"/>
+						Width="354">
+                        <TextBox.Text>
+                            <Binding  ValidatesOnNotifyDataErrors="True"
+                 ValidatesOnDataErrors="True"
+                 NotifyOnValidationError="True" Path="ClientData.PhoneNumber">
+                                <Binding.ValidationRules>
+                                    <DataErrorValidationRule />
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                        <TextBox.ToolTip>
+                            <ToolTip DataContext="{Binding Path=PlacementTarget, RelativeSource={x:Static RelativeSource.Self}}">
+                                <StackPanel>
+                                    <Label FontWeight="Bold" Content="Hint"/>
+                                    <Label Content="Type your phone number like XXX-XX-XX-XXX"/>
+                                </StackPanel>
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                    </TextBox>
                 </GroupBox>
                 <GroupBox
                     BorderBrush="Gray"
@@ -638,5 +676,13 @@
                 </GroupBox>
             </Grid>
         </GroupBox>
+        <Grid>
+            <Label 
+                Foreground="Red"
+                HorizontalAlignment="Center"               				
+				FontSize="14"
+				FontWeight="Bold">
+                All fields are compulsory</Label>
+        </Grid>
     </DockPanel>
 </Window>

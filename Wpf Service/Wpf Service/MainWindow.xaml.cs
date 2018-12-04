@@ -41,13 +41,14 @@ namespace Wpf_Service
         /// </summary>
         private readonly OrdersStorage _storage;
 
-
+        
         private static MainWindow _instance;
 
         public ICommand _saveCommand;
 
         public ICommand SaveCommand
         {
+            
             get
             {
                 if (_saveCommand == null)
@@ -62,13 +63,15 @@ namespace Wpf_Service
         {
             get { return _instance; }
         }
-
+        bool cans = false;
         /// <summary>
         /// Parameterless constructor of application's main window.
         /// </summary>
         public MainWindow()
         {
+            
             InitializeComponent();
+            
             EditOrderButton.IsEnabled = false;
             DeletOrderButton.IsEnabled = false;
             try
@@ -83,7 +86,7 @@ namespace Wpf_Service
                 Util.Error("Storage fatal error", e.Message);
                 Application.Current.Shutdown();
             }
-
+            this.DataContext = _order;
             _validator = new Validator(
                 new List<TextBox>
                 {
@@ -104,7 +107,14 @@ namespace Wpf_Service
                 Email,
                 PhoneNumber);
             ResetOrderInstance();
-            Closing += OnWindowClose;
+            Closing += new System.ComponentModel.CancelEventHandler((object sender, System.ComponentModel.CancelEventArgs e) =>
+            {
+                OnWindowClose(sender, e);
+                if (cans)
+                {
+                    e.Cancel = true;
+                }
+            });
             _instance = this;
             SetTextBoxAction();
             setUpdater();
@@ -116,11 +126,11 @@ namespace Wpf_Service
         }
         private async void UpdateButton()
         {
-            SaveButton.IsEnabled = HasChanges();
+            SaveButton.IsEnabled = HasChanges2();
             while (true)
             {
                 await Task.Delay(50);
-                SaveButton.IsEnabled = HasChanges();
+                SaveButton.IsEnabled = HasChanges2();
             }
         }
 
@@ -310,6 +320,7 @@ namespace Wpf_Service
             DataContext = _order;
         }
 
+       
         public void OnWindowClose(object sender, System.ComponentModel.CancelEventArgs e)
         {
 
@@ -325,6 +336,25 @@ namespace Wpf_Service
             }
         }
 
+        public bool HasChanges2()
+        {
+            var textBoxes = FindVisualChildren<TextBox>(this);
+            bool hasChanges = false;
+            foreach (var textBox in textBoxes)
+            {
+                if (textBox.Text != string.Empty && textBox.Text != "0")
+            {
+                hasChanges = true;
+
+            }
+            else
+            {
+                    hasChanges = false;
+                    break; }
+            }
+            return hasChanges;
+        }
+
         public bool HasChanges()
         {
             var textBoxes = FindVisualChildren<TextBox>(this);
@@ -337,21 +367,23 @@ namespace Wpf_Service
                     hasChanges = true;
                     break;
                 }
-            }
 
+            }
             return hasChanges;
         }
 
         private void SaveWindow()
         {
+            cans = false;
             string sMessageBoxText = "Do you want to Save?";
             string sCaption = "";
 
             MessageBoxButton btnMessageBox = MessageBoxButton.YesNo;
             MessageBoxImage icnMessageBox = MessageBoxImage.Warning;
-
-            MessageBoxResult rsltMessageBox = MessageBox.Show(sMessageBoxText, sCaption, btnMessageBox, icnMessageBox);
-
+            MessageBoxResult rsltMessageBox = MessageBox.Show("Do you want to save?",
+                                          "Confirmation",
+                                          MessageBoxButton.YesNoCancel,
+                                          MessageBoxImage.Question);
             switch (rsltMessageBox)
             {
                 case MessageBoxResult.Yes:
@@ -359,6 +391,9 @@ namespace Wpf_Service
                     break;
 
                 case MessageBoxResult.No:
+                    break;
+                case MessageBoxResult.Cancel:
+                    cans = true;
                     break;
             }
         }

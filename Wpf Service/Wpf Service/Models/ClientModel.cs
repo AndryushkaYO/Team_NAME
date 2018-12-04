@@ -9,6 +9,7 @@ using System.Xml.Serialization;
 
 namespace Wpf_Service.Models
 {
+    
     [Serializable]
     public class ClientModel
     {
@@ -80,5 +81,7 @@ namespace Wpf_Service.Models
                 new XAttribute("PhoneNumber", PhoneNumber),
                 AddressModel.ToXml());
         }
-    }
+        
+    
+}
 }
