@@ -91,5 +91,49 @@ namespace WPF_UnitTests
             XElement z = product.ToXml();
             Assert.AreNotEqual(x, z);
         }
+
+        [TestMethod]
+        public void OrderTest()
+        {
+            ProductModel product = new ProductModel(23443, 2);
+            AddressModel address = new AddressModel("Lviv", "Medova", 65);
+            ClientModel client = new ClientModel("Andri", "Yovbak", "andri@gmai.com", "066-26-39-014", address);
+            StoreModel store = new StoreModel("MeowShop", address);
+            Order order = new Order(12, client, store, product);
+            Assert.AreEqual(order.ClientData.FirstName, "Andri");
+            Assert.AreEqual(order.ClientData.LastName, "Yovbak");
+            Assert.AreEqual(order.ClientData.Email, "andri@gmai.com");
+            Assert.AreEqual(order.ClientData.PhoneNumber, "066-26-39-014");
+            Assert.AreEqual(order.ClientData.AddressModel.City, "Lviv");
+            Assert.AreEqual(order.ClientData.AddressModel.Street, "Medova");
+            Assert.AreEqual(order.ClientData.AddressModel.BuildingNumber, (UInt32)65);
+            Assert.AreEqual(order.GoodsData.Code, (uint)23443);
+            Assert.AreEqual(order.GoodsData.Weight, 2);
+            Assert.AreEqual(order.ShopData.Name, "MeowShop");
+            Assert.AreEqual(order.ShopData.AddressModel.City, "Lviv");
+            Assert.AreEqual(order.ShopData.AddressModel.Street, "Medova");
+            Assert.AreEqual(order.ShopData.AddressModel.BuildingNumber, (UInt32)65);
+
+            XElement q = new XElement(
+                "Order",
+                new XAttribute("Id", 1),
+                client.ToXml(),
+                product.ToXml(),
+                store.ToXml());
+
+            XElement z = order.ToXml();
+            Assert.AreNotEqual(q, z);
+        }
+
+        [TestMethod]
+        public void OrderStorageTest()
+        {
+            string path = "storage.xml";
+            OrdersStorage storage = new OrdersStorage(path);
+            storage.CreateIfNotExists();
+            Assert.IsTrue(storage.StorageExists());
+            storage.DeleteIfExists();
+            Assert.IsFalse(storage.StorageExists());
+        }
     }
 }
