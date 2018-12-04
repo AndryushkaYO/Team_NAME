@@ -18,4 +18,22 @@
       <AddressModel City="dafd" Street="123" BuildingNumber="4" />
     </ShopData>
   </Order>
+  <Order Id="2">
+    <ClientData FirstName="kjshdk" LastName="kjhi" Email="dfsdv@jkkhj.fdg" PhoneNumber="066-45-45-455">
+      <AddressModel City="jkjbnbjv" Street="mbj" BuildingNumber="2" />
+    </ClientData>
+    <GoodsData Code="12123" Weight="3" />
+    <ShopData Name="jbjhgjkjbkjg">
+      <AddressModel City="mbjgu" Street="kjhjugv" BuildingNumber="2" />
+    </ShopData>
+  </Order>
+  <Order Id="3">
+    <ClientData FirstName="uygugiu" LastName="jhbgj" Email="guig@fgvj.df" PhoneNumber="055-34-34-344">
+      <AddressModel City="kjhkljj" Street="ghig" BuildingNumber="2" />
+    </ClientData>
+    <GoodsData Code="23435" Weight="3" />
+    <ShopData Name="jkg">
+      <AddressModel City="jhg" Street="kj" BuildingNumber="2" />
+    </ShopData>
+  </Order>
 </ArrayOfOrder>

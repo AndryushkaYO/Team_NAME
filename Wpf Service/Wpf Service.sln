@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpf Service", "Wpf Service\Wpf Service.csproj", "{ABD5B938-3302-4CD2-AACD-695461569D35}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_UnitTests", "WPF_UnitTests\WPF_UnitTests.csproj", "{A6EC1909-0732-4D2C-A18F-6A4F4217FF01}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{ABD5B938-3302-4CD2-AACD-695461569D35}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABD5B938-3302-4CD2-AACD-695461569D35}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABD5B938-3302-4CD2-AACD-695461569D35}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6EC1909-0732-4D2C-A18F-6A4F4217FF01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6EC1909-0732-4D2C-A18F-6A4F4217FF01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6EC1909-0732-4D2C-A18F-6A4F4217FF01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6EC1909-0732-4D2C-A18F-6A4F4217FF01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
