@@ -9,6 +9,7 @@ using System.Xml.Serialization;
 
 namespace Wpf_Service.Models
 {
+    
     [Serializable]
     public class ClientModel
     {
@@ -73,12 +74,14 @@ namespace Wpf_Service.Models
         public XElement ToXml()
         {
             return new XElement(
-                "ClientModel",
+                "ClientData",
                 new XAttribute("FirstName", FirstName),
                 new XAttribute("LastName", LastName),
                 new XAttribute("Email", Email),
                 new XAttribute("PhoneNumber", PhoneNumber),
                 AddressModel.ToXml());
         }
-    }
+        
+    
+}
 }

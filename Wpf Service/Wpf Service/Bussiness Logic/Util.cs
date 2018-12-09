@@ -12,13 +12,13 @@ namespace Wpf_Service.Bussiness_Logic
 
         public static void Error(string caption, string message)
         {
-            MessageBox.Show(message, caption, MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
 
         public static void Info(string caption, string message)
         {
-            MessageBox.Show(message, caption, MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show(message, "Info", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

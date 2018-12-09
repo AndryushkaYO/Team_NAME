@@ -1,0 +1,20 @@
+C:\Users\Hp\Desktop\Team_NAME\Wpf Service\WPF_UnitTests\obj\Debug\WPF_UnitTests.csprojAssemblyReference.cache
+C:\Users\Hp\Desktop\Team_NAME\Wpf Service\WPF_UnitTests\obj\Debug\WPF_UnitTests.csproj.CoreCompileInputs.cache
+C:\Users\Hp\Desktop\Team_NAME\Wpf Service\WPF_UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Hp\Desktop\Team_NAME\Wpf Service\WPF_UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Hp\Desktop\Team_NAME\Wpf Service\WPF_UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Hp\Desktop\Team_NAME\Wpf Service\WPF_UnitTests\bin\Debug\ru\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll
+C:\Users\Hp\Desktop\Team_NAME\Wpf Service\WPF_UnitTests\bin\Debug\ru\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll
+C:\Users\Hp\Desktop\Team_NAME\Wpf Service\WPF_UnitTests\bin\Debug\ru\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
+C:\Users\Hp\Desktop\Team_NAME\Wpf Service\WPF_UnitTests\bin\Debug\WPF_UnitTests.dll
+C:\Users\Hp\Desktop\Team_NAME\Wpf Service\WPF_UnitTests\bin\Debug\WPF_UnitTests.pdb
+C:\Users\Hp\Desktop\Team_NAME\Wpf Service\WPF_UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\Hp\Desktop\Team_NAME\Wpf Service\WPF_UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\Hp\Desktop\Team_NAME\Wpf Service\WPF_UnitTests\bin\Debug\Wpf Service.exe
+C:\Users\Hp\Desktop\Team_NAME\Wpf Service\WPF_UnitTests\bin\Debug\Wpf Service.pdb
+C:\Users\Hp\Desktop\Team_NAME\Wpf Service\WPF_UnitTests\bin\Debug\Wpf Service.exe.config
+C:\Users\Hp\Desktop\Team_NAME\Wpf Service\WPF_UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\Hp\Desktop\Team_NAME\Wpf Service\WPF_UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\Hp\Desktop\Team_NAME\Wpf Service\WPF_UnitTests\obj\Debug\WPF_UnitTests.csproj.CopyComplete
+C:\Users\Hp\Desktop\Team_NAME\Wpf Service\WPF_UnitTests\obj\Debug\WPF_UnitTests.dll
+C:\Users\Hp\Desktop\Team_NAME\Wpf Service\WPF_UnitTests\obj\Debug\WPF_UnitTests.pdb

@@ -62,6 +62,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Bussiness Logic\SaveCommand.cs" />
     <Compile Include="Bussiness Logic\Util.cs" />
     <Compile Include="Bussiness Logic\Validator.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -74,6 +75,8 @@
     <Compile Include="Models\ClientModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\StoreModel.cs" />
+    <Compile Include="Orders\Order.cs" />
+    <Compile Include="Orders\OrdersStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
