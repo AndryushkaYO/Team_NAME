@@ -9,7 +9,7 @@ namespace AdoDotNet.Task
     public class Task
     {
 
-        private readonly Db _db;
+        public readonly Db _db;
 
 
         private const string TitleTemplate = "|============= {0} =============|";
@@ -20,8 +20,12 @@ namespace AdoDotNet.Task
             _db = new Db("Integrated Security=true; Initial Catalog=NORTHWND; server=DESKTOP-EFLFJL0");
         }
 
+        public Task(string s)
+        {
+            _db = new Db(s);
+        }
 
-        private void ConnectToDatabase()
+        public void ConnectToDatabase()
         {
             if (!_db.Connect())
             {
@@ -32,7 +36,7 @@ namespace AdoDotNet.Task
         }
 
 
-        private void DisconnectFromDatabase()
+        public void DisconnectFromDatabase()
         {
             if (!_db.Disconnect())
             {
