@@ -1,0 +1,9 @@
+C:\Users\vova1\OneDrive\Desktop\Team_NAME\AdoDotNet\bin\Debug\AdoDotNet.exe.config
+C:\Users\vova1\OneDrive\Desktop\Team_NAME\AdoDotNet\bin\Debug\AdoDotNet.exe
+C:\Users\vova1\OneDrive\Desktop\Team_NAME\AdoDotNet\bin\Debug\AdoDotNet.pdb
+C:\Users\vova1\OneDrive\Desktop\Team_NAME\AdoDotNet\bin\Debug\ConsoleTables.dll
+C:\Users\vova1\OneDrive\Desktop\Team_NAME\AdoDotNet\obj\Debug\AdoDotNet.csprojAssemblyReference.cache
+C:\Users\vova1\OneDrive\Desktop\Team_NAME\AdoDotNet\obj\Debug\AdoDotNet.csproj.CoreCompileInputs.cache
+C:\Users\vova1\OneDrive\Desktop\Team_NAME\AdoDotNet\obj\Debug\AdoDotNet.csproj.CopyComplete
+C:\Users\vova1\OneDrive\Desktop\Team_NAME\AdoDotNet\obj\Debug\AdoDotNet.exe
+C:\Users\vova1\OneDrive\Desktop\Team_NAME\AdoDotNet\obj\Debug\AdoDotNet.pdb
