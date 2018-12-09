@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AdoTask = AdoDotNet.Task.Task;
 
 namespace AdoDotNet
 {
-    class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
+            new AdoTask().ExecuteTask();
         }
     }
 }
