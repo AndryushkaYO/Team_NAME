@@ -17,7 +17,7 @@ namespace AdoDotNet.Task
 
         public Task()
         {
-            _db = new Db("Integrated Security=true; Initial Catalog=Northwind; server=DESKTOP-EFLFJL0");
+            _db = new Db("Integrated Security=true; Initial Catalog=NORTHWND; server=DESKTOP-EFLFJL0");
         }
 
 
