@@ -8,13 +8,19 @@ namespace AdoDotNet.Task
 {
     public class Task
     {
-
+        /// <summary>
+		/// Database used for the task.
+		/// </summary>
         public readonly Db _db;
 
-
+        /// <summary>
+		/// Template of the database's title.
+		/// </summary>
         private const string TitleTemplate = "|============= {0} =============|";
 
-
+        /// <summary>
+		/// Initializes a new instance of the <see cref="Task"/> class.
+		/// </summary>
         public Task()
         {
             _db = new Db("Integrated Security=true; Initial Catalog=NORTHWND; server=DESKTOP-EFLFJL0");
@@ -24,7 +30,10 @@ namespace AdoDotNet.Task
         {
             _db = new Db(s);
         }
-
+        /// <summary>
+		/// Connects to the database.
+		/// </summary>
+		/// <exception cref="Exception">Throws if connection failed.</exception>
         public void ConnectToDatabase()
         {
             if (!_db.Connect())
@@ -35,7 +44,10 @@ namespace AdoDotNet.Task
             Console.WriteLine(TitleTemplate + "\n\n", "Successfully connected to the database");
         }
 
-
+        /// <summary>
+		/// Disconnects from the database.
+		/// </summary>
+		/// <exception cref="Exception">Throws if disconnection failed.</exception>
         public void DisconnectFromDatabase()
         {
             if (!_db.Disconnect())
@@ -46,7 +58,12 @@ namespace AdoDotNet.Task
             Console.WriteLine("\n" + TitleTemplate, "Successfully disconnected from the database");
         }
 
-
+        /// <summary>
+		/// Function to print table.
+		/// </summary>
+		/// <param name="title">Table title.</param>
+		/// <param name="data">Table to print.</param>
+		/// <param name="columnsNames">Columns' names.</param>
         private static void PrintTaskResult(string title, IReadOnlyCollection<List<string>> data, List<string> columnsNames)
         {
             var table = new ConsoleTable(columnsNames.ToArray());
@@ -64,7 +81,9 @@ namespace AdoDotNet.Task
             }
         }
 
-
+        /// <summary>
+		/// Function to execute all task's queries (18-27, see their descriptions in <see cref="Queries"/>).
+		/// </summary>
         public void ExecuteTask()
         {
             try
