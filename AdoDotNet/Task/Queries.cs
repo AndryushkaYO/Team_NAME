@@ -2,7 +2,9 @@
 
 namespace AdoDotNet.Task
 {
-    
+    /// <summary>
+	/// Contains task queries.
+	/// </summary>
     public static class Queries
     {
         public static readonly List<string> Data = new List<string>
