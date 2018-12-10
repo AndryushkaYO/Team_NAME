@@ -25,14 +25,6 @@ namespace WPF_UnitTests
             Assert.AreEqual(address.Street, "Medova");
             Assert.AreEqual(address.BuildingNumber, (UInt32)65);
 
-            XElement x = new XElement(
-                "AddressModel",
-                new XAttribute("City", "Kiev"),
-                new XAttribute("Street", "Medova"),
-                new XAttribute("BuildingNumber", 98));
-
-            XElement z = address.ToXml();
-            Assert.AreNotEqual(z, x);
         }
 
         [TestMethod]
@@ -48,15 +40,6 @@ namespace WPF_UnitTests
             Assert.AreEqual(client.AddressModel.Street, "Medova");
             Assert.AreEqual(client.AddressModel.BuildingNumber, (UInt32)65);
 
-            XElement x = new XElement(
-                "ClientData",
-                new XAttribute("FirstName", "Oleg"),
-                new XAttribute("LastName", "Datskiv"),
-                new XAttribute("Email", "o@maill.c"),
-                new XAttribute("PhoneNumber", "099-45-56-345"),
-                address.ToXml());
-            XElement z = client.ToXml();
-            Assert.AreNotEqual(x, z);
         }
 
         [TestMethod]
@@ -69,12 +52,6 @@ namespace WPF_UnitTests
             Assert.AreEqual(store.AddressModel.Street, "Medova");
             Assert.AreEqual(store.AddressModel.BuildingNumber, (UInt32)65);
 
-            XElement x = new XElement(
-                "ShopData",
-                new XAttribute("Name", "CoShop"),
-                address.ToXml());
-            XElement z = store.ToXml();
-            Assert.AreNotEqual(x, z);
         }
 
         [TestMethod]
@@ -84,12 +61,6 @@ namespace WPF_UnitTests
             Assert.AreEqual(product.Code, (uint)23443);
             Assert.AreEqual(product.Weight, 2);
 
-            XElement x = new XElement(
-                 "GoodsData",
-                 new XAttribute("Code", 12232),
-                 new XAttribute("Weight", 1));
-            XElement z = product.ToXml();
-            Assert.AreNotEqual(x, z);
         }
 
         [TestMethod]
@@ -113,27 +84,7 @@ namespace WPF_UnitTests
             Assert.AreEqual(order.ShopData.AddressModel.City, "Lviv");
             Assert.AreEqual(order.ShopData.AddressModel.Street, "Medova");
             Assert.AreEqual(order.ShopData.AddressModel.BuildingNumber, (UInt32)65);
-
-            XElement q = new XElement(
-                "Order",
-                new XAttribute("Id", 1),
-                client.ToXml(),
-                product.ToXml(),
-                store.ToXml());
-
-            XElement z = order.ToXml();
-            Assert.AreNotEqual(q, z);
         }
-
-        [TestMethod]
-        public void OrderStorageTest()
-        {
-            string path = "storage.xml";
-            OrdersStorage storage = new OrdersStorage(path);
-            storage.CreateIfNotExists();
-            Assert.IsTrue(storage.StorageExists());
-            storage.DeleteIfExists();
-            Assert.IsFalse(storage.StorageExists());
-        }
+      
     }
 }

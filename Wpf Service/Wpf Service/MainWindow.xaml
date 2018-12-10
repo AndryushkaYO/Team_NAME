@@ -3,7 +3,8 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	mc:Ignorable="d"
+    xmlns:local="clr-namespace:Wpf_Service"
+        mc:Ignorable="d"
 	x:Name="WindowMain"
 	Title="Delivery Service"
         ResizeMode="NoResize"
@@ -11,8 +12,7 @@
 	Width="830"
 	MinHeight="680"
 	MinWidth="830"
-    Background="PowderBlue"
-	d:DataContext="{d:_order}">
+    Background="PowderBlue">
     <DockPanel
 		Margin="10"
 		Height="690"
@@ -45,7 +45,7 @@
 						SelectionChanged="ItemIsSelected"
 						MaxHeight="{Binding ElementName=WindowMain, Path=ActualHeight}">
                         <ListView.View>
-                            <GridView>
+                            <GridView >
                                 <GridViewColumn DisplayMemberBinding="{Binding Path=Key}" Width="50">Id</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding Path=Value}" Width="150">Owner</GridViewColumn>
                             </GridView>

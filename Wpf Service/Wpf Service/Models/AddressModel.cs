@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -10,17 +13,15 @@ using System.Xml.Serialization;
 
 namespace Wpf_Service.Models
 {
-    [Serializable]
     public class AddressModel
     {
+        [Key]
+        public string Id { get; private set; }
 
-        [XmlAttribute]
         public string City { get; set; }
-
-        [XmlAttribute]
+    
         public string Street { get; set; }
 
-        [XmlAttribute]
         public uint BuildingNumber { get; set; }
 
         public AddressModel()
@@ -32,32 +33,14 @@ namespace Wpf_Service.Models
             City = city.Trim();
             Street = street.Trim();
             BuildingNumber = buildingNumber;
+            Id = getKey();
         }
 
-        public AddressModel(XmlAttributeCollection source)
+        public string getKey()
         {
-            if (source == null)
-            {
-                throw new NullReferenceException("can't parse AddressModel");
-            }
-
-            City = source["City"].Value;
-            Street = source["Street"].Value;
-            if (!uint.TryParse(source["BuildingNumber"].Value, out var buidingNumber))
-            {
-                throw new InvalidDataException("AddressModel.BuildingNumber must be of type 'uint'");
-            }
-
-            BuildingNumber = buidingNumber;
+            return City + Street + BuildingNumber;
         }
 
-        public XElement ToXml()
-        {
-            return new XElement(
-                "AddressModel",
-                new XAttribute("City", City),
-                new XAttribute("Street", Street),
-                new XAttribute("BuildingNumber", BuildingNumber));
-        }
+   
     }
 }

@@ -18,3 +18,7 @@ C:\Users\Hp\Desktop\Team_NAME\Wpf Service\WPF_UnitTests\bin\Debug\Microsoft.Visu
 C:\Users\Hp\Desktop\Team_NAME\Wpf Service\WPF_UnitTests\obj\Debug\WPF_UnitTests.csproj.CopyComplete
 C:\Users\Hp\Desktop\Team_NAME\Wpf Service\WPF_UnitTests\obj\Debug\WPF_UnitTests.dll
 C:\Users\Hp\Desktop\Team_NAME\Wpf Service\WPF_UnitTests\obj\Debug\WPF_UnitTests.pdb
+C:\Users\bohdan.khymera\source\repos\Oopsie\Team_NAME\Wpf Service\WPF_UnitTests\obj\Debug\WPF_UnitTests.csprojAssemblyReference.cache
+C:\Users\bohdan.khymera\source\repos\Oopsie\Team_NAME\Wpf Service\WPF_UnitTests\obj\Debug\WPF_UnitTests.csproj.CoreCompileInputs.cache
+C:\Users\bohdan.khymera\source\repos\Oopsie\Team_NAME\Wpf Service\WPF_UnitTests\obj\Debug\WPF_UnitTests.dll
+C:\Users\bohdan.khymera\source\repos\Oopsie\Team_NAME\Wpf Service\WPF_UnitTests\obj\Debug\WPF_UnitTests.pdb

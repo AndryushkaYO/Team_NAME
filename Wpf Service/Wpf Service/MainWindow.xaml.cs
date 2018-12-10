@@ -13,6 +13,8 @@ using Wpf_Service.Models;
 using Wpf_Service.Orders;
 using System.Windows.Media;
 using System.Windows.Input;
+using Wpf_Service.Models.Contexts;
+using Wpf_Service.Models.UnitOfWork;
 
 namespace Wpf_Service
 {
@@ -29,7 +31,7 @@ namespace Wpf_Service
         /// <summary>
         /// Contains information of current creating/editing order.
         /// </summary>
-        private Order _order;
+        private Order order;
 
         /// <summary>
         /// Validator instance.
@@ -39,7 +41,7 @@ namespace Wpf_Service
         /// <summary>
         /// An object for storage connection.
         /// </summary>
-        private readonly OrdersStorage _storage;
+        private readonly IUnitOfWork _storage;
 
         
         private static MainWindow _instance;
@@ -63,6 +65,9 @@ namespace Wpf_Service
         {
             get { return _instance; }
         }
+
+        public Order Order { get => order; set => order = value; }
+
         bool cans = false;
         /// <summary>
         /// Parameterless constructor of application's main window.
@@ -76,17 +81,25 @@ namespace Wpf_Service
             DeletOrderButton.IsEnabled = false;
             try
             {
-                _storage = new OrdersStorage("storage.xml");
-                _storage.CreateIfNotExists();
-                var ordersList = _storage.RetrieveAllIds();
-                _nextId = ordersList.Count != 0 ? ordersList.Keys.Last() + 1 : 0;
+                _storage = new UnitOfWork(new OrderDbContext());
+                //_storage.Orders.Add(new Order(0,
+                //    new ClientModel("Leroy","Jenkins","damnsongmail","69696",
+                //    new AddressModel("Kansas","Booze",69)),new StoreModel("GetRect",new AddressModel("Kansas","ShposStreet",123)),
+                //    new ProductModel(53623,12)));
+                //_storage.Complete();
+                var wat = _storage.Orders.GetAll();
+                List<Order> ordersList = (wat).ToList();
+
+                var list = from p in ordersList select new KeyValuePair<double, Order>(Convert.ToInt64(p.Id), p);
+                Dictionary<double, Order> oreders = new Dictionary<double, Order>(list.ToDictionary(x => x.Key, x => x.Value));
+                _nextId = ordersList.Count() != 0 ? Convert.ToInt64(ordersList.Last().Id + 1) : 0;
             }
             catch (NullReferenceException e)
             {
                 Util.Error("Storage fatal error", e.Message);
                 Application.Current.Shutdown();
             }
-            this.DataContext = _order;
+            this.DataContext = Order;
             _validator = new Validator(
                 new List<TextBox>
                 {
@@ -139,9 +152,13 @@ namespace Wpf_Service
         /// </summary>
         /// <param name="sender">The button New that the action is for.</param>
         /// <param name="e">Arguments that the implementor of this event may find useful.</param>
-        private void ExploreOrders(object sender, RoutedEventArgs e)
+        private  void ExploreOrders(object sender, RoutedEventArgs e)
         {
-            var orders = _storage.RetrieveAllIds();
+            var wat = _storage.Orders.GetAll();
+            List<Order> ordersList = (wat).ToList();
+
+            var list = from p in ordersList select new KeyValuePair<double, Order>(Convert.ToInt64(p.Id), p);
+            Dictionary<double, Order> orders = new Dictionary<double, Order>(list.ToDictionary(x => x.Key, x => x.Value));
             if (orders.Count > 0)
             {
                 OrdersList.ItemsSource = orders;
@@ -171,8 +188,8 @@ namespace Wpf_Service
                 if (OrdersList.SelectedItems.Count == 1)
                 {
                     var selectedItem = (dynamic)OrdersList.SelectedItems[0];
-                    _order = _storage.Retrieve(selectedItem.Key);
-                    DataContext = _order;
+                    Order = _storage.Orders.Find(selectedItem.Key.ToString()).Result;
+                    DataContext = Order;
                 }
             }
             catch (Exception exc)
@@ -219,15 +236,19 @@ namespace Wpf_Service
             try
             {
                 _validator.Validate();
-                if (_order.Id == -1)
+                long id = Convert.ToInt64(Order.Id);
+                if (id == -1)
                 {
-                    _order.Id = _nextId++;
-                    _storage.Add(_order);
+                    Order.Id = (_nextId++).ToString();
+                    _storage.Orders.Add(Order);
+                    _storage.Complete();
                     ResetOrderInstance();
                 }
                 else
                 {
-                    _storage.Update(_order.Id, _order);
+                    _storage.Orders.Remove(_storage.Orders.FindFirst(or=>or.Id == id.ToString()));
+                    _storage.Orders.Add(Order);
+                    _storage.Complete();
                 }
 
                 Util.Info("Wpf_Service", "An order was saved successfully!");
@@ -278,7 +299,7 @@ namespace Wpf_Service
         /// </summary>
         /// <param name="sender">The button New that the action is for.</param>
         /// <param name="e">Arguments that the implementor of this event may find useful.</param>
-        private void DeleteOrder(object sender, RoutedEventArgs e)
+        private async void DeleteOrder(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -288,11 +309,13 @@ namespace Wpf_Service
                 }
 
                 var selectedItem = (dynamic)OrdersList.SelectedItems[0];
-                _storage.Remove(selectedItem.Key);
+                string id = selectedItem.Key.ToString();
+                var toRemove =  _storage.Orders.FindFirst(op=>op.Id == id);
+                _storage.Orders.Remove(toRemove);
                 OrdersList.SelectedItem = null;
                 EditOrderButton.IsEnabled = false;
                 DeletOrderButton.IsEnabled = false;
-                var orders = _storage.RetrieveAllIds();
+                var orders = _storage.Orders.GetAll().ToList();
                 if (orders.Count < 1)
                 {
                     OrdersExplorer.IsOpen = false;
@@ -316,8 +339,8 @@ namespace Wpf_Service
         /// </summary>
         private void ResetOrderInstance()
         {
-            _order = new Order { Id = -1 };
-            DataContext = _order;
+            Order = new Order { Id = "-1" };
+            DataContext = Order;
         }
 
        

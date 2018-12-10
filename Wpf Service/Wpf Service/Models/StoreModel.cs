@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,13 +12,16 @@ using System.Xml.Serialization;
 namespace Wpf_Service.Models
 {
 
-    [Serializable]
+  
     public class StoreModel
     {
-
+        [Key]
         public string Name { get; set; }
 
-        public AddressModel AddressModel { get; set; }
+        public string AddressKey { get; set; }
+
+        [ForeignKey("AddressKey")]
+        public  AddressModel AddressModel { get; set; }
 
 
         public StoreModel()
@@ -29,24 +34,7 @@ namespace Wpf_Service.Models
         {
             Name = name.Trim();
             AddressModel = shopAddressModel;
-        }
-
-        public StoreModel(XmlNode source)
-        {
-
-            var attributes = source.Attributes;
-
-            Name = attributes["Name"].Value;
-            var AddressModelElement = source.SelectSingleNode("AddressModel");
-            AddressModel = new AddressModel(AddressModelElement.Attributes);
-        }
-
-        public XElement ToXml()
-        {
-            return new XElement(
-                "ShopData",
-                new XAttribute("Name", Name),
-                AddressModel.ToXml());
+            AddressKey = AddressModel.getKey();
         }
     }
 }
