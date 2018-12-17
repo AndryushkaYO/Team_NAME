@@ -22,9 +22,10 @@ namespace Wpf_Service.Models.Repository
             return Context.Set<TEntity>().Find(id);
         }
 
-        public  IEnumerable<TEntity> GetAll()
+        public virtual IEnumerable<TEntity> GetAll()
         {
-            return  Context.Set<TEntity>().ToList();
+            return Context.Set<TEntity>().ToList();
+
         }
 
         public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)

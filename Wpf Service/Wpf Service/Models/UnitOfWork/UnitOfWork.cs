@@ -13,21 +13,21 @@ namespace Wpf_Service.Models.UnitOfWork
     {
         private readonly OrderDbContext _context;
 
-        public IRepository<AddressModel> Addressses { get; }
-        public IRepository<ClientModel> Clients { get; }
-        public IRepository<ProductModel> Products { get; }
-        public IRepository<StoreModel> Stores { get; }
-        public IRepository<Orders.Order> Orders { get; }
+        public AddressRepo Addressses { get; }
+        public ClientRepo Clients { get; }
+        public ProductRepo Products { get; }
+        public StoreRepo Stores { get; }
+        public OrderRepo Orders { get; }
 
 
         public UnitOfWork(OrderDbContext context)
         {
             _context = context;
-            Addressses = new Repository<AddressModel>(_context);
-            Clients = new Repository<ClientModel>(_context);
-            Products = new Repository<ProductModel>(_context);
-            Stores = new Repository<StoreModel>(_context);
-            Orders = new Repository<Orders.Order>(_context);
+            Addressses = new AddressRepo(_context);
+            Clients = new ClientRepo(_context);
+            Products = new ProductRepo(_context);
+            Stores = new StoreRepo(_context);
+            Orders = new OrderRepo(_context);
         }
 
         public void Dispose()
@@ -36,9 +36,9 @@ namespace Wpf_Service.Models.UnitOfWork
         }      
 
 
-        public async Task<int> Complete()
+        public  int Complete()
         {
-            return await _context.SaveChangesAsync();         
+            return  _context.SaveChanges();         
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Wpf_Service.Models
     public class AddressModel
     {
         [Key]
-        public string Id { get; private set; }
+        public string Id { get;  set; }
 
         public string City { get; set; }
     
@@ -24,16 +24,19 @@ namespace Wpf_Service.Models
 
         public uint BuildingNumber { get; set; }
 
+        public virtual string ClientId { get; set; }
+
         public AddressModel()
         {
         }
 
-        public AddressModel(string city, string street, uint buildingNumber)
+        public AddressModel(string city, string street, uint buildingNumber,string client = null)
         {
             City = city.Trim();
             Street = street.Trim();
             BuildingNumber = buildingNumber;
             Id = getKey();
+            ClientId = client;
         }
 
         public string getKey()

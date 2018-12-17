@@ -82,17 +82,16 @@ namespace Wpf_Service
             try
             {
                 _storage = new UnitOfWork(new OrderDbContext());
-                //_storage.Orders.Add(new Order(0,
+                //Order toSeed = new Order(0,
                 //    new ClientModel("Leroy","Jenkins","damnsongmail","69696",
-                //    new AddressModel("Kansas","Booze",69)),new StoreModel("GetRect",new AddressModel("Kansas","ShposStreet",123)),
-                //    new ProductModel(53623,12)));
-                //_storage.Complete();
-                var wat = _storage.Orders.GetAll();
-                List<Order> ordersList = (wat).ToList();
-
-                var list = from p in ordersList select new KeyValuePair<double, Order>(Convert.ToInt64(p.Id), p);
-                Dictionary<double, Order> oreders = new Dictionary<double, Order>(list.ToDictionary(x => x.Key, x => x.Value));
-                _nextId = ordersList.Count() != 0 ? Convert.ToInt64(ordersList.Last().Id + 1) : 0;
+                //    new AddressModel("Kansas","Booze",69),"0"),new StoreModel("GetRect",new AddressModel("Kansas","ShposStreet",123,""),"0"),
+                //    new ProductModel(53623,12,0.ToString()));
+                //toSeed.ClientData.AddressModel.ClientId = toSeed.ClientKey;
+                //_storage.Orders.Add(toSeed);
+                _storage.Complete();
+                //var wat = _storage.Orders.GetAll();               
+                //_nextId = ordersList.Count() != 0 ? Convert.ToInt64(ordersList.Last().Id + 1) : 0;
+                _storage.Complete();
             }
             catch (NullReferenceException e)
             {
@@ -233,13 +232,30 @@ namespace Wpf_Service
 
         public void Save()
         {
+            _storage.Complete();
             try
             {
                 _validator.Validate();
                 long id = Convert.ToInt64(Order.Id);
                 if (id == -1)
                 {
-                    Order.Id = (_nextId++).ToString();
+
+                    _storage.Complete();                   
+                    Order.Id = (678).ToString();
+                    Order.ClientKey = Order.ClientData.getKey();
+                    Order.ClientData.AddressKey = Order.ClientData.AddressModel.getKey();
+                    Order.ClientData.AddressModel.Id = Order.ClientData.AddressModel.getKey();
+                    Order.ClientData.Id = Order.ClientData.getKey();
+                    Order.ClientKey = Order.ClientData.getKey();
+                    Order.ProdId = Order.GoodsData.Code;
+                    Order.ShopData.AddressModel.Id = Order.ShopData.AddressModel.getKey();
+                    Order.ShopData.AddressKey = Order.ShopData.AddressModel.getKey();
+                    Order.StoreId = Order.ShopData.Name;
+                    Order.ClientData.OrderId = Order.Id;
+                    Order.GoodsData.OrderKey = Order.Id;
+                    Order.ShopData.OrderId = Order.Id;
+                    Order.ClientData.AddressModel.ClientId = Order.ClientData.Id;
+                    Order.ShopData.AddressModel.ClientId = Order.ShopData.Name;
                     _storage.Orders.Add(Order);
                     _storage.Complete();
                     ResetOrderInstance();
@@ -247,7 +263,7 @@ namespace Wpf_Service
                 else
                 {
                     _storage.Orders.Remove(_storage.Orders.FindFirst(or=>or.Id == id.ToString()));
-                    _storage.Orders.Add(Order);
+                    //_storage.Orders.Add(Order);
                     _storage.Complete();
                 }
 

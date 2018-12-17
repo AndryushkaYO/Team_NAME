@@ -16,7 +16,7 @@ namespace Wpf_Service.Models
     public class ClientModel
     {
         [Key]
-        public string Id { get; private set; }
+        public string Id { get; set; }
 
         public string FirstName { get; set; }
 
@@ -28,7 +28,9 @@ namespace Wpf_Service.Models
 
         public string AddressKey { get; set; }
         [ForeignKey("AddressKey")]
-        public  AddressModel AddressModel { get; set; }
+        public virtual AddressModel AddressModel { get; set; }
+
+        public virtual string OrderId { get; set; }
 
         public ClientModel()
         {
@@ -40,7 +42,8 @@ namespace Wpf_Service.Models
             string lastName,
             string email,
             string phoneNumber,
-            AddressModel clientAddress)
+            AddressModel clientAddress,
+            string orderId)
         {
             FirstName = firstName.Trim();
             LastName = lastName.Trim();
@@ -49,6 +52,7 @@ namespace Wpf_Service.Models
             AddressModel = clientAddress;
             Id = getKey();
             AddressKey = AddressModel.getKey();
+            OrderId = orderId;
         }
 
         public string getKey()

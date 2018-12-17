@@ -32,21 +32,21 @@ namespace Wpf_Service.Orders
         /// </summary>
         public string ClientKey { get; set; }
         [ForeignKey("ClientKey")]
-        public ClientModel ClientData { get; set; }
+        public virtual ClientModel ClientData { get; set; }
 
         /// <summary>
         /// Represents shop data.
         /// </summary>
         public string StoreId { get; set; }
         [ForeignKey("StoreId")]
-        public StoreModel ShopData { get; set; }
+        public virtual StoreModel ShopData { get; set; }
 
         /// <summary>
         /// Holds an information about ordered goods.
         /// </summary>
         public string ProdId { get; set; }
         [ForeignKey("ProdId")]
-        public ProductModel GoodsData { get; set; }
+        public virtual ProductModel GoodsData { get; set; }
 
 
         /// <summary>

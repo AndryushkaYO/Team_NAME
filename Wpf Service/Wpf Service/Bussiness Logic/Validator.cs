@@ -70,10 +70,10 @@ namespace Wpf_Service.Bussiness_Logic
                 throw new InvalidDataException("Field 'Email' can't be empty!");
             }
 
-            if (!new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$").IsMatch(text))
-            {
-                throw new InvalidDataException("Incorrect email pattern!");
-            }
+            //if (!new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$").IsMatch(text))
+            //{
+            //    throw new InvalidDataException("Incorrect email pattern!");
+            //}
         }
 
         private void ValidatePhoneNumber()
@@ -84,10 +84,10 @@ namespace Wpf_Service.Bussiness_Logic
                 throw new InvalidDataException("Field 'PhoneNumber' can't be empty!");
             }
 
-            if (!new Regex(@"^(\d){3}\-(\d){2}\-(\d){2}\-(\d){3}$").Match(text).Success)
-            {
-                throw new InvalidDataException("Incorrect phone number pattern, use 'xxx-xx-xx-xxx' format.");
-            }
+            //if (!new Regex(@"^(\d){3}\-(\d){2}\-(\d){2}\-(\d){3}$").Match(text).Success)
+            //{
+            //    throw new InvalidDataException("Incorrect phone number pattern, use 'xxx-xx-xx-xxx' format.");
+            //}
         }
     }
 }

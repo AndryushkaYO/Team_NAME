@@ -9,12 +9,12 @@ namespace Wpf_Service.Models.UnitOfWork
 {
     public interface IUnitOfWork : IDisposable
     {
-        IRepository<AddressModel> Addressses { get; }
-        IRepository<ClientModel> Clients { get; }
-        IRepository<ProductModel> Products { get; }
-        IRepository<StoreModel> Stores { get; }
-        IRepository<Orders.Order> Orders { get; }       
+        AddressRepo Addressses { get; }
+        ClientRepo Clients { get; }
+        ProductRepo Products { get; }
+        StoreRepo Stores { get; }
+        OrderRepo Orders { get; }
 
-        Task<int> Complete();
+        int Complete();
     }
 }

@@ -18,17 +18,20 @@ namespace Wpf_Service.Models
 
         public double Weight { get; set; }
 
+        public virtual string OrderKey { get; set; }
+
         public ProductModel()
         {
         }
 
-        public ProductModel(uint code, double weight)
+        public ProductModel(uint code, double weight, string orderKey)
         {
             Code = code.ToString();
             Weight = weight;
+            OrderKey = orderKey;
         }
 
-      
+        
       
     }
 }

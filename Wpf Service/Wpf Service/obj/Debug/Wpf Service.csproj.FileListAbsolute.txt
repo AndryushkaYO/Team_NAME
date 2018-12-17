@@ -103,3 +103,6 @@ C:\Users\bohdan.khymera\source\repos\Oopsie\Team_NAME\Wpf Service\Wpf Service\ob
 C:\Users\bohdan.khymera\source\repos\Oopsie\Team_NAME\Wpf Service\Wpf Service\obj\Debug\Wpf Service.exe
 C:\Users\bohdan.khymera\source\repos\Oopsie\Team_NAME\Wpf Service\Wpf Service\obj\Debug\Wpf Service.pdb
 C:\Users\bohdan.khymera\source\repos\Oopsie\Team_NAME\Wpf Service\Wpf Service\obj\Debug\Wpf Service_MarkupCompile.lref
+C:\Users\bohdan.khymera\source\repos\Oopsie\Team_NAME\Wpf Service\Wpf Service\obj\Debug\Wpf_Service.Migrations.InitialCreate.resources
+C:\Users\bohdan.khymera\source\repos\Oopsie\Team_NAME\Wpf Service\Wpf Service\obj\Debug\Wpf_Service.Migrations.KeyUpte.resources
+C:\Users\bohdan.khymera\source\repos\Oopsie\Team_NAME\Wpf Service\Wpf Service\obj\Debug\Wpf_Service.Migrations.KysUpdate.resources

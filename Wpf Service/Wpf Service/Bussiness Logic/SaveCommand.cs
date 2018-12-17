@@ -19,7 +19,7 @@ namespace Wpf_Service.Bussiness_Logic
 
         public void Execute(object parameter)
         {
-           MainWindow.Instance.Save();
+          // MainWindow.Instance.Save();
         }
     }
 }

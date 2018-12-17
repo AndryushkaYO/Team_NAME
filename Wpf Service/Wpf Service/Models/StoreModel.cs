@@ -20,9 +20,10 @@ namespace Wpf_Service.Models
 
         public string AddressKey { get; set; }
 
-        [ForeignKey("AddressKey")]
-        public  AddressModel AddressModel { get; set; }
+        public virtual string OrderId { get; set; }
 
+        [ForeignKey("AddressKey")]
+        public virtual AddressModel AddressModel { get; set; }
 
         public StoreModel()
         {
@@ -30,11 +31,12 @@ namespace Wpf_Service.Models
         }
 
 
-        public StoreModel(string name, AddressModel shopAddressModel)
+        public StoreModel(string name, AddressModel shopAddressModel,string orderId)
         {
             Name = name.Trim();
             AddressModel = shopAddressModel;
             AddressKey = AddressModel.getKey();
+            OrderId = orderId;
         }
     }
 }
