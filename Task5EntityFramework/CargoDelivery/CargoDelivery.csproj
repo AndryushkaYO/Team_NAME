@@ -47,6 +47,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Reflection.Context" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -82,6 +83,7 @@
     <Compile Include="Classes\OrderData\ShopData.cs" />
     <Compile Include="DAL\Interfaces\IGenericRepository.cs" />
     <Compile Include="DAL\Interfaces\IUnitOfWork.cs" />
+    <Compile Include="DAL\OrderContext.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
